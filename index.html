@@ -6,7 +6,10 @@
 <meta name="theme-color" content="#0E1012">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Mapeo Cutting</title>
+<title>Maptik</title>
+<meta name="description" content="Maptik: herramientas offline para mapeo geológico de cutting y sondajes">
+<meta name="application-name" content="Maptik">
+<meta name="apple-mobile-web-app-title" content="Maptik">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem('ui.theme'))||'dark'}catch(e){}</script>
@@ -407,14 +410,43 @@ html[data-theme="light"]{--s-pex:#B95E2C;--s-ht:#2F6CB8}
 .col-it.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
 .col-it .pin{position:absolute;left:7px;bottom:6px;font-size:10.5px;font-weight:600;color:#fff;background:rgba(0,0,0,.42);padding:2px 7px;border-radius:6px;backdrop-filter:blur(3px)}
 [hidden]{display:none!important}
+/* ===== v5 ===== */
+html[data-theme="dark"]{--s-est:#C8763E;--s-det:#4F95DE;--s-ori:#3FA372}
+html[data-theme="light"]{--s-est:#B95E2C;--s-det:#2F6CB8;--s-ori:#2A8653}
+.brand{margin-bottom:6px}
+.wordmark{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.18em;color:var(--accent);margin-bottom:14px}
+.reg-tabs{display:flex;width:100%}
+.reg-tabs button{flex:1;justify-content:center;min-height:44px}
+.reg-tabs .badge:empty{display:none}
+.sond{padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);margin-bottom:10px;animation:pop .22s var(--ease);display:flex;flex-direction:column;gap:10px;position:relative}
+.sond.bad{border-color:color-mix(in srgb,var(--err) 55%,transparent)}
+.sond.warn{border-color:color-mix(in srgb,var(--warn) 55%,transparent)}
+.sond::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:0 3px 3px 0;background:var(--tc)}
+.sond .r1{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.sond .r1 .field:first-child{flex:1;min-width:170px}
+.sond .r2{display:grid;grid-template-columns:1fr 1fr 96px 40px;gap:8px;align-items:end}
+.sond .seg{padding:3px}
+.sond .seg button{padding:6px 11px;min-height:38px;font-size:13px}
+.sond .input{font-family:var(--mono)}
+.m-in{position:relative}
+.m-in::after{content:"m";position:absolute;right:12px;bottom:12px;color:var(--muted);font-size:13px;pointer-events:none}
+.m-in .input{padding-right:28px}
+.sond .count{height:44px}
+.sond .del{width:40px;height:44px;border-radius:11px;display:grid;place-items:center;color:var(--muted)}
+.sond .del:hover{color:var(--err);background:color-mix(in srgb,var(--err) 10%,transparent)}
+.sond .msg{font-size:12px}
+.sond.bad .msg{color:var(--err)} .sond.warn .msg{color:var(--warn)}
+.sond .sub-hide{display:none}
+@media (max-width:760px){.sond .r2{grid-template-columns:1fr 1fr}.reg-tabs button{padding:8px 6px;font-size:12.5px}}
 </style>
 </head>
 <body>
 <div class="app">
   <nav class="rail" aria-label="Secciones">
-    <div class="brand" title="Mapeo Cutting">
+    <div class="brand" title="Maptik">
       <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><rect x="4" y="3" width="24" height="26" rx="5" stroke="var(--accent)" stroke-width="2"/><rect x="8" y="7" width="16" height="18" rx="2.5" fill="var(--accent-weak)"/><path d="M11 11l2-1 1.5 1.6-1 1.8-2.2-.4z M18 14l2.4-.6 1 1.8-1.6 1.5-1.9-1z M12 19l1.8-.9 1.4 1.4-.9 1.7-2-.5z M19 20.5l1.5-.4.8 1.2-1 1-1.4-.6z" fill="var(--accent)"/></svg>
     </div>
+    <div class="wordmark">MAPTIK</div>
     <button class="nav-btn" data-go="clasif"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 9h17M3.5 14.5h17M9.5 9v11"/></svg>Tablas</button>
     <button class="nav-btn" data-go="visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="9" cy="8.5" r="1.3" fill="currentColor"/><circle cx="14.5" cy="11" r="1.6" fill="currentColor"/><circle cx="9.5" cy="15" r="1.1" fill="currentColor"/><circle cx="15" cy="16.5" r="1.2" fill="currentColor"/></svg>% Visual</button>
     <button class="nav-btn" data-go="min"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.8l7.5 4.4v9.6L12 21.2l-7.5-4.4V7.2z"/><path d="M12 2.8v8.6m0 0l7.5-4.2M12 11.4L4.5 7.2M12 11.4v9.8"/></svg>Minerales</button>
@@ -422,7 +454,7 @@ html[data-theme="light"]{--s-pex:#B95E2C;--s-ht:#2F6CB8}
     <div class="spacer"></div>
     <button class="install-btn" id="installBtn">Instalar app</button>
     <button class="icon-btn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema"></button>
-    <div class="ver">v4</div>
+    <div class="ver">v5</div>
   </nav>
 
   <main>
@@ -588,26 +620,57 @@ html[data-theme="light"]{--s-pex:#B95E2C;--s-ht:#2F6CB8}
                 </div>
               </div>
               <div class="card-b">
-                <div class="edit-state" id="editState" style="margin-bottom:12px"></div>
+                <div class="edit-state" id="editState" style="margin-bottom:14px"></div>
+                <div class="seg reg-tabs" id="regTabs">
+                  <button data-t="cut"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="9" cy="9" r="1.2" fill="currentColor"/><circle cx="14.5" cy="12" r="1.4" fill="currentColor"/><circle cx="10" cy="16" r="1.1" fill="currentColor"/></svg>Cutting <span class="badge" id="bCut"></span></button>
+                  <button data-t="son"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M8 5h8M8 10h8M8 15h8M9 20h6"/></svg>Sondajes <span class="badge" id="bSon"></span></button>
+                  <button data-t="rep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></svg>Reporte del día</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cutting -->
+            <div class="card" id="regCut">
+              <div class="card-h"><h3>Muestras cutting</h3><span class="hint">PEX subterránea · HT rajo abierto</span></div>
+              <div class="card-b">
                 <div id="ranges"></div>
                 <div class="row" style="margin-top:6px">
                   <button class="btn" id="addRange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar rango</button>
                   <span class="hint" style="color:var(--muted);font-size:12.5px">En “Hasta” puedes escribir solo los últimos dígitos.</span>
                 </div>
                 <div class="totals" id="totals"></div>
-                <div class="field" style="margin-top:14px">
-                  <label for="regObs">Observaciones (opcional)</label>
-                  <textarea class="input" id="regObs" rows="2" placeholder="Ej.: sondaje, nivel, banco, comentarios…"></textarea>
-                </div>
               </div>
             </div>
 
-            <div class="card">
-              <div class="card-h"><h3>Reporte</h3><div style="flex:1"></div>
-                <div class="seg" id="fmtSeg"><button data-v="det">Detallado</button><button data-v="comp">Compacto</button><button data-v="xls">Excel</button></div>
+            <!-- Sondajes -->
+            <div class="card" id="regSon" hidden>
+              <div class="card-h"><h3>Mapeo de sondajes</h3><span class="hint">tramos en metros</span></div>
+              <div class="card-b">
+                <div id="sonds"></div>
+                <div class="row" style="margin-top:6px">
+                  <button class="btn" id="addSond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar tramo</button>
+                  <span class="hint" style="color:var(--muted);font-size:12.5px">El tramo nuevo continúa el sondaje anterior desde su “Hasta”.</span>
+                </div>
+                <div class="totals" id="sTotals"></div>
+                <datalist id="sondList"></datalist>
+              </div>
+            </div>
+
+            <!-- Reporte -->
+            <div class="card" id="regRep" hidden>
+              <div class="card-h" style="flex-wrap:wrap"><h3>Reporte del día</h3><div style="flex:1"></div>
+                <div class="seg" id="fmtSeg"><button data-v="simple">Simple</button><button data-v="det">Detallado</button><button data-v="xls">Excel</button></div>
               </div>
               <div class="card-b">
+                <div class="row" style="gap:18px;margin-bottom:12px">
+                  <div class="sw-row" style="padding:0;gap:10px"><button class="switch" id="incCut" aria-label="Incluir cutting"></button><span>Incluir cutting</span></div>
+                  <div class="sw-row" style="padding:0;gap:10px"><button class="switch" id="incSon" aria-label="Incluir sondajes"></button><span>Incluir sondajes</span></div>
+                </div>
                 <div class="report" id="report"></div>
+                <div class="field" style="margin-top:14px">
+                  <label for="regObs">Observaciones del día (opcional)</label>
+                  <textarea class="input" id="regObs" rows="2" placeholder="Ej.: nivel, banco, comentarios…"></textarea>
+                </div>
                 <div class="row" style="margin-top:12px">
                   <button class="btn primary" id="copyBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h2"/></svg>Copiar reporte</button>
                   <button class="btn ghost danger" id="clearDay">Borrar día</button>
@@ -621,10 +684,11 @@ html[data-theme="light"]{--s-pex:#B95E2C;--s-ht:#2F6CB8}
               <div class="card-h"><h3>Productividad</h3><div style="flex:1"></div>
                 <div class="seg" id="prodSeg"><button data-v="d">14 días</button><button data-v="w">8 semanas</button><button data-v="m">6 meses</button></div>
               </div>
+              <div class="card-b" style="padding-bottom:10px"><div class="seg" id="prodKind"><button data-v="cut">Cutting · muestras</button><button data-v="son">Sondajes · metros</button></div></div>
               <div class="card-b">
                 <div class="kpis" id="kpis"></div>
                 <div class="chart-wrap" id="prodChart"></div>
-                <div class="legend"><span><i style="background:var(--s-pex)"></i>PEX · Subterránea</span><span><i style="background:var(--s-ht)"></i>HT · Rajo</span></div>
+                <div class="legend" id="prodLegend"></div>
               </div>
             </div>
             <div class="card">
@@ -632,7 +696,7 @@ html[data-theme="light"]{--s-pex:#B95E2C;--s-ht:#2F6CB8}
               <div class="card-b">
                 <div class="search" style="max-width:none">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
-                  <input class="input mono" id="findId" placeholder="¿En qué día mapeé…? PEX100041681" autocomplete="off">
+                  <input class="input mono" id="findId" placeholder="¿En qué día mapeé…? PEX100041681 o DDH-2451" autocomplete="off">
                 </div>
                 <div class="find-res" id="findRes"></div>
                 <div id="hist"></div>
@@ -661,7 +725,7 @@ html[data-theme="light"]{--s-pex:#B95E2C;--s-ht:#2F6CB8}
 
 <script>'use strict';
 /* ============================================================
-   Mapeo Cutting — app offline para mapeo geológico de cutting
+   Maptik — app offline para mapeo geológico de cutting y sondajes
    ============================================================ */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -803,7 +867,7 @@ const VIEWS = {
   clasif: ['Tablas de clasificación', 'Zonas minerales, unidades de alteración y asociaciones de mena'],
   visual: ['Porcentaje visual', 'Referencia de estimación sobre bandeja de cutting'],
   min: ['Minerales de cobre', 'Color, raya y propiedades de sulfuros y óxidos'],
-  reg: ['Registro de mapeo', 'Muestras correlativas por día · PEX subterránea · HT rajo'],
+  reg: ['Registro de mapeo', 'Cutting (PEX · HT) y sondajes · reporte diario'],
 };
 function go(v) {
   if (!VIEWS[v]) v = 'clasif';
@@ -1299,7 +1363,8 @@ function confirmBox(title, text, okLabel = 'Eliminar') {
 
 /* ============================================================ REGISTRO */
 const REG = store.get('reg.data', {}); // { 'YYYY-MM-DD': { ranges:[{t,d,h}], obs } }
-let REG_DATE = todayISO(); let REG_FMT = store.get('reg.fmt', 'det');
+let REG_DATE = todayISO(); let REG_FMT = store.get('reg.fmt', 'det'); if (REG_FMT === 'comp') REG_FMT = 'simple';
+let REG_TAB = store.get('reg.tab', 'cut'); const INC = Object.assign({ cut: true, son: true }, store.get('reg.inc', {}));
 function todayISO() { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); }
 function shiftISO(iso, n) { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); }
 const dmy = iso => iso.split('-').reverse().join('-');
@@ -1307,8 +1372,8 @@ const WD = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 const TIPOS = { PEX: 'Subterránea', HT: 'Rajo abierto' };
 const saveReg = () => store.set('reg.data', REG);
-function day(iso = REG_DATE) { return REG[iso] || (REG[iso] = { ranges: [], obs: '' }); }
-function cleanEmpty() { for (const k in REG) { const d = REG[k]; if (!d.obs && !d.ranges.some(r => r.d || r.h)) delete REG[k]; } }
+function day(iso = REG_DATE) { const d = REG[iso] || (REG[iso] = { ranges: [], sond: [], obs: '' }); if (!d.sond) d.sond = []; return d; }
+function cleanEmpty() { for (const k in REG) { const d = REG[k]; if (!d.obs && !d.ranges.some(r => r.d || r.h) && !(d.sond || []).some(x => x.id || x.d || x.h)) delete REG[k]; } }
 
 // resolve "hasta": if shorter than desde, complete with desde's leading digits
 function resolveH(r) {
@@ -1333,6 +1398,102 @@ function analyze(ranges) {
   return infos;
 }
 function totals(ranges) { const inf = analyze(ranges); const t = { PEX: 0, HT: 0 }; inf.forEach((x, i) => { if (x.ok) t[ranges[i].t] += x.n; }); return t; }
+
+
+/* ---------- Sondajes ---------- */
+const S_TIPO = { est: 'Estructural', det: 'Detalle', ori: 'Orientado' };
+const S_OPS = { det: [['cl', 'Con leyes'], ['sl', 'Sin leyes']], ori: [['cr', 'Con rayo'], ['sr', 'Sin rayo']] };
+const S_COL = { est: 'var(--s-est)', det: 'var(--s-det)', ori: 'var(--s-ori)' };
+const opLabel = { cl: 'con leyes', sl: 'sin leyes', cr: 'con rayo', sr: 'sin rayo' };
+const tipoLabel = x => S_TIPO[x.tipo] + (S_OPS[x.tipo] ? ' ' + opLabel[x.op || S_OPS[x.tipo][0][0]] : '');
+const tipoShort = x => S_TIPO[x.tipo] + (S_OPS[x.tipo] ? ' ' + ({ cl: 'c/ leyes', sl: 's/ leyes', cr: 'c/ rayo', sr: 's/ rayo' })[x.op || S_OPS[x.tipo][0][0]] : '');
+const pm = v => { const n = parseFloat(String(v ?? '').replace(',', '.')); return isNaN(n) ? null : n; };
+const fm = (v, d = 1) => fmt(v, d);
+function sondInfo(x) {
+  const a = pm(x.d), b = pm(x.h);
+  if (a == null || b == null) return { ok: false, empty: !x.id && a == null && b == null, m: 0 };
+  if (!String(x.id || '').trim()) return { ok: false, err: 'Falta el nombre del sondaje', m: 0, a, b };
+  if (b <= a) return { ok: false, err: '“Hasta” debe ser mayor que “Desde”', m: 0, a, b };
+  return { ok: true, a, b, m: Math.round((b - a) * 100) / 100 };
+}
+function sondAnalyze(list) {
+  const inf = list.map(sondInfo);
+  inf.forEach((x, i) => { if (!x.ok) return; for (let j = 0; j < i; j++) { const y = inf[j]; if (!y.ok || norm(list[j].id) !== norm(list[i].id)) continue; if (x.a < y.b && y.a < x.b) { x.warn = `Se solapa con el tramo ${j + 1} del mismo sondaje`; break; } } });
+  return inf;
+}
+function sondTot(list) { const t = { est: 0, det: 0, ori: 0, m: 0, n: 0, ids: new Set() }; sondAnalyze(list || []).forEach((x, i) => { if (x.ok) { const s = list[i]; t[s.tipo] += x.m; t.m += x.m; t.n++; t.ids.add(norm(s.id)); } }); t.m = Math.round(t.m * 100) / 100; return t; }
+function lastSond() { const ds = Object.keys(REG).sort(); for (let i = ds.length - 1; i >= 0; i--) { const rs = REG[ds[i]].sond || []; for (let j = rs.length - 1; j >= 0; j--) if (rs[j].id) return rs[j]; } return null; }
+function sondIds() { const seen = new Map(); Object.keys(REG).sort().reverse().forEach(k => (REG[k].sond || []).forEach(x => { const id = String(x.id || '').trim(); if (id && !seen.has(norm(id))) seen.set(norm(id), id); })); return [...seen.values()].slice(0, 60); }
+function newSondRow() {
+  const D = day(); const last = D.sond[D.sond.length - 1] || null; const ls = last || lastSond();
+  return { id: ls ? ls.id : '', tipo: ls ? ls.tipo : 'det', op: ls ? ls.op : 'cl', d: last && last.h ? last.h : '', h: '' };
+}
+function renderSonds(focusIdx, focusField) {
+  const D = day(); if (!D.sond.length) D.sond.push({ ...newSondRow(), d: '' });
+  const inf = sondAnalyze(D.sond);
+  $('#sondList').innerHTML = sondIds().map(id => `<option value="${esc(id)}">`).join('');
+  $('#sonds').innerHTML = D.sond.map((x, i) => {
+    const f = inf[i]; const cls = f.err ? 'bad' : f.warn ? 'warn' : ''; const ops = S_OPS[x.tipo];
+    return `<div class="sond ${cls}" data-i="${i}" style="--tc:${S_COL[x.tipo]}">
+      <div class="r1">
+        <div class="field"><label>Sondaje</label><input class="input" data-f="id" list="sondList" autocomplete="off" autocapitalize="characters" placeholder="Ej.: DDH-2451" value="${esc(x.id)}"></div>
+        <div class="field"><label>Tipo de mapeo</label><div class="seg" data-tipo>${Object.entries(S_TIPO).map(([k, l]) => `<button class="${x.tipo === k ? 'on' : ''}" data-v="${k}">${l}</button>`).join('')}</div></div>
+        <div class="field ${ops ? '' : 'sub-hide'}"><label>${x.tipo === 'ori' ? 'Rayo' : 'Leyes'}</label><div class="seg" data-op>${(ops || S_OPS.det).map(([k, l]) => `<button class="${(x.op || (ops && ops[0][0])) === k ? 'on' : ''}" data-v="${k}">${l}</button>`).join('')}</div></div>
+      </div>
+      <div class="r2">
+        <div class="field m-in"><label>Desde (m)</label><input class="input" data-f="d" inputmode="decimal" autocomplete="off" placeholder="0,0" value="${esc(x.d)}"></div>
+        <div class="field m-in"><label>Hasta (m)</label><input class="input" data-f="h" inputmode="decimal" autocomplete="off" placeholder="0,0" value="${esc(x.h)}"></div>
+        <div class="count"><b>${f.ok ? fm(f.m) : '—'}</b><small>METROS</small></div>
+        <button class="del" data-del aria-label="Eliminar tramo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/></svg></button>
+      </div>
+      ${f.err || f.warn ? `<div class="msg">${esc(f.err || f.warn)}</div>` : ''}
+    </div>`;
+  }).join('');
+  if (focusIdx != null) { const el = $(`.sond[data-i="${focusIdx}"] [data-f="${focusField || 'h'}"]`); if (el) el.focus(); }
+  renderRegSide();
+}
+function updSondRow(row, i) {
+  const D = day(); const inf = sondAnalyze(D.sond); const f = inf[i];
+  $('.count b', row).textContent = f.ok ? fm(f.m) : '—';
+  row.classList.toggle('bad', !!f.err); row.classList.toggle('warn', !f.err && !!f.warn);
+  let msg = $('.msg', row); const txt = f.err || f.warn;
+  if (txt) { if (!msg) { msg = document.createElement('div'); msg.className = 'msg'; row.appendChild(msg); } msg.textContent = txt; } else if (msg) msg.remove();
+}
+$('#sonds').addEventListener('input', e => {
+  const inp = e.target.closest('[data-f]'); if (!inp) return;
+  const row = inp.closest('.sond'); const i = +row.dataset.i; const x = day().sond[i]; const f = inp.dataset.f;
+  let v = inp.value;
+  if (f === 'id') { v = v.toUpperCase(); if (inp.value !== v) { const p = inp.selectionStart; inp.value = v; try { inp.setSelectionRange(p, p); } catch (_) { } } }
+  else { v = v.replace(/[^\d.,]/g, ''); if (inp.value !== v) inp.value = v; }
+  x[f] = v; saveReg(); updSondRow(row, i); renderRegSide();
+});
+$('#sonds').addEventListener('keydown', e => {
+  const inp = e.target.closest('[data-f]'); if (!inp || e.key !== 'Enter') return; e.preventDefault();
+  const i = +inp.closest('.sond').dataset.i; const D = day();
+  if (inp.dataset.f === 'id') return $(`.sond[data-i="${i}"] [data-f="d"]`).focus();
+  if (inp.dataset.f === 'd') return $(`.sond[data-i="${i}"] [data-f="h"]`).focus();
+  if (i === D.sond.length - 1) { D.sond.push(newSondRow()); saveReg(); renderSonds(i + 1, 'h'); } else $(`.sond[data-i="${i + 1}"] [data-f="d"]`).focus();
+});
+$('#sonds').addEventListener('click', async e => {
+  const row = e.target.closest('.sond'); if (!row) return; const i = +row.dataset.i; const D = day(); const x = D.sond[i];
+  const tb = e.target.closest('[data-tipo] button'); if (tb) { x.tipo = tb.dataset.v; x.op = S_OPS[x.tipo] ? S_OPS[x.tipo][0][0] : ''; saveReg(); renderSonds(); return; }
+  const ob = e.target.closest('[data-op] button'); if (ob) { x.op = ob.dataset.v; saveReg(); renderSonds(); return; }
+  if (e.target.closest('[data-del]')) {
+    const f = sondInfo(x);
+    if (!f.empty && !await confirmBox('¿Eliminar este tramo?', `${x.id || 'Sondaje'} · ${x.d || '…'} – ${x.h || '…'} m`)) return;
+    D.sond.splice(i, 1); saveReg(); renderSonds();
+  }
+});
+$('#addSond').addEventListener('click', () => { const D = day(); D.sond.push(newSondRow()); saveReg(); renderSonds(D.sond.length - 1, D.sond[D.sond.length - 1].d ? 'h' : 'd'); });
+function setRegTab(t) {
+  REG_TAB = t; store.set('reg.tab', t);
+  $$('#regTabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+  $('#regCut').hidden = t !== 'cut'; $('#regSon').hidden = t !== 'son'; $('#regRep').hidden = t !== 'rep';
+}
+$('#regTabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRegTab(b.dataset.t); });
+function syncInc() { $('#incCut').classList.toggle('on', INC.cut); $('#incSon').classList.toggle('on', INC.son); }
+$('#incCut').addEventListener('click', () => { INC.cut = !INC.cut; store.set('reg.inc', INC); syncInc(); $('#report').textContent = buildReport(REG_DATE, REG_FMT); });
+$('#incSon').addEventListener('click', () => { INC.son = !INC.son; store.set('reg.inc', INC); syncInc(); $('#report').textContent = buildReport(REG_DATE, REG_FMT); });
 
 function renderRanges(focusIdx, focusField) {
   const D = day(); if (!D.ranges.length) D.ranges.push({ t: lastType(), d: '', h: '' });
@@ -1365,61 +1526,105 @@ function renderRegSide() {
   const d = new Date(REG_DATE + 'T12:00:00');
   const isToday = REG_DATE === todayISO();
   $('#editState').innerHTML = `<span class="dot" style="background:var(--accent);box-shadow:0 0 0 3px var(--accent-weak)"></span>${WD[d.getDay()]} ${dmy(REG_DATE)}${isToday ? ' · hoy' : ''} — se guarda automáticamente`;
-  $('#regObs').value = D.obs || '';
+  const st = sondTot(D.sond);
+  $('#sTotals').innerHTML = ['est', 'det', 'ori'].map(k => `<div class="res"><div class="k"><i style="display:inline-block;width:9px;height:9px;border-radius:3px;background:${S_COL[k]}"></i>${S_TIPO[k]}</div><div class="v">${fm(st[k])}<small style="font-size:12px;color:var(--muted)"> m</small></div></div>`).join('') +
+    `<div class="res hl" style="grid-column:1/-1"><div class="k">Total sondajes del día · ${st.ids.size} ${st.ids.size === 1 ? 'sondaje' : 'sondajes'} · ${st.n} ${st.n === 1 ? 'tramo' : 'tramos'}</div><div class="v">${fm(st.m)} m</div></div>`;
+  $('#bCut').textContent = total ? total.toLocaleString('es-CL') : ''; $('#bSon').textContent = st.m ? fm(st.m) + ' m' : '';
+  if (document.activeElement !== $('#regObs')) $('#regObs').value = D.obs || '';
   $$('#fmtSeg button').forEach(b => b.classList.toggle('on', b.dataset.v === REG_FMT));
   $('#report').textContent = buildReport(REG_DATE, REG_FMT);
   renderHist();
 }
 function buildReport(iso, f) {
-  const D = REG[iso] || { ranges: [], obs: '' }; const inf = analyze(D.ranges);
-  const ok = D.ranges.map((r, i) => ({ ...r, ...inf[i] })).filter(x => x.ok);
-  const t = { PEX: 0, HT: 0 }; ok.forEach(x => t[x.t] += x.n); const total = t.PEX + t.HT;
-  if (!ok.length) return 'Sin rangos válidos todavía.\nIngresa “Desde” y “Hasta” para generar el reporte.';
+  const D = REG[iso] || { ranges: [], sond: [], obs: '' };
+  const inf = analyze(D.ranges || []);
+  const cut = INC.cut ? (D.ranges || []).map((r, i) => ({ ...r, ...inf[i] })).filter(x => x.ok) : [];
+  const sinf = sondAnalyze(D.sond || []);
+  const son = INC.son ? (D.sond || []).map((x, i) => ({ ...x, ...sinf[i] })).filter(x => x.ok) : [];
+  const t = { PEX: 0, HT: 0 }; cut.forEach(x => t[x.t] += x.n); const total = t.PEX + t.HT;
+  const st = { est: 0, det: 0, ori: 0, m: 0 }; son.forEach(x => { st[x.tipo] += x.m; st.m += x.m; });
+  const nIds = new Set(son.map(x => norm(x.id))).size;
+  const dd = new Date(iso + 'T12:00:00'); const fecha = `${dmy(iso)} (${WD[dd.getDay()]})`;
+  if (!cut.length && !son.length) return (!INC.cut && !INC.son) ? 'Activa al menos una sección (cutting o sondajes).' : 'Sin registros válidos para este día todavía.\nIngresa rangos de cutting o tramos de sondaje.';
   const id = (tp, v) => tp + v;
+  const groups = []; son.forEach(x => { let g = groups.find(g => norm(g.id) === norm(x.id)); if (!g) groups.push(g = { id: x.id.trim(), rows: [] }); g.rows.push(x); });
+  groups.forEach(g => { g.rows.sort((a, b) => a.a - b.a); g.m = g.rows.reduce((a, x) => a + x.m, 0); });
+  const tiposUsados = []; son.forEach(x => { const l = tipoLabel(x); if (!tiposUsados.find(t => t.l === l)) tiposUsados.push({ l, m: 0 }); }); son.forEach(x => tiposUsados.find(t => t.l === tipoLabel(x)).m += x.m);
   if (f === 'xls') {
-    return ['Fecha\tTipo\tDesde\tHasta\tCantidad', ...ok.map(x => `${dmy(iso)}\t${x.t}\t${id(x.t, x.d)}\t${id(x.t, x.h)}\t${x.n}`), `\t\t\tTOTAL\t${total}`].join('\n');
+    const L = ['Fecha\tRegistro\tSondaje\tTipo\tDesde\tHasta\tCantidad\tUnidad'];
+    cut.forEach(x => L.push(`${dmy(iso)}\tCutting\t\t${x.t} – ${TIPOS[x.t]}\t${id(x.t, x.d)}\t${id(x.t, x.h)}\t${x.n}\tmuestras`));
+    son.forEach(x => L.push(`${dmy(iso)}\tSondaje\t${x.id.trim()}\t${tipoLabel(x)}\t${fm(x.a, 2)}\t${fm(x.b, 2)}\t${fm(x.m, 2)}\tm`));
+    if (cut.length) L.push(`\t\t\t\t\tTotal cutting\t${total}\tmuestras`);
+    if (son.length) L.push(`\t\t\t\t\tTotal sondajes\t${fm(st.m, 2)}\tm`);
+    return L.join('\n');
   }
-  if (f === 'comp') {
-    return `Mapeo cutting ${dmy(iso)}: ` + ok.map(x => `${id(x.t, x.d)}-${id(x.t, x.h)} (${x.n})`).join('; ') + `. Total: ${total} muestras` + (t.PEX && t.HT ? ` (PEX ${t.PEX} / HT ${t.HT})` : '') + '.' + (D.obs ? ` Obs.: ${D.obs}` : '');
+  if (f === 'simple') {
+    const L = [`Mapeo ${fecha}`];
+    if (cut.length) { L.push(`Cutting: ${total} muestras` + (t.PEX && t.HT ? ` (PEX ${t.PEX} · HT ${t.HT})` : '')); cut.forEach(x => L.push(`  ${id(x.t, x.d)} – ${id(x.t, x.h)} (${x.n})`)); }
+    if (son.length) { L.push(`Sondajes: ${fm(st.m)} m (${nIds} ${nIds === 1 ? 'sondaje' : 'sondajes'})`); groups.forEach(g => g.rows.forEach(x => L.push(`  ${g.id} ${fm(x.a)}–${fm(x.b)} m · ${tipoShort(x)} (${fm(x.m)} m)`))); }
+    if (D.obs) L.push(`Obs.: ${D.obs}`);
+    return L.join('\n');
   }
-  const L = [`REGISTRO MAPEO CUTTING`, `Fecha: ${dmy(iso)}`, ''];
-  ['PEX', 'HT'].forEach(tp => {
-    const xs = ok.filter(x => x.t === tp); if (!xs.length) return;
-    L.push(`${tp} – ${TIPOS[tp]}`);
-    const w = Math.max(...xs.map(x => id(tp, x.d).length));
-    xs.forEach(x => L.push(`  ${id(tp, x.d).padEnd(w)}  a  ${id(tp, x.h).padEnd(w)}  : ${String(x.n).padStart(4)} muestras`));
-    L.push(`  Subtotal ${tp}: ${t[tp]} muestras`, '');
-  });
-  L.push(`TOTAL: ${total} muestras`);
+  const L = ['REPORTE DIARIO DE MAPEO', `Fecha: ${fecha}`, ''];
+  if (cut.length) {
+    L.push('=== MUESTRAS CUTTING ===');
+    ['PEX', 'HT'].forEach(tp => {
+      const xs = cut.filter(x => x.t === tp); if (!xs.length) return;
+      L.push(`${tp} – ${TIPOS[tp]}`);
+      const w = Math.max(...xs.map(x => id(tp, x.d).length));
+      xs.forEach(x => L.push(`  ${id(tp, x.d).padEnd(w)}  a  ${id(tp, x.h).padEnd(w)}  : ${String(x.n).padStart(4)} muestras`));
+      L.push(`  Subtotal ${tp}: ${t[tp]} muestras`, '');
+    });
+    L.push(`Total cutting: ${total} muestras`, '');
+  }
+  if (son.length) {
+    L.push('=== MAPEO DE SONDAJES ===');
+    const w = Math.max(...son.map(x => (fm(x.a) + ' – ' + fm(x.b)).length));
+    groups.forEach(g => {
+      L.push(g.id);
+      g.rows.forEach(x => L.push(`  ${(fm(x.a) + ' – ' + fm(x.b)).padStart(w)} m : ${fm(x.m).padStart(6)} m   ${tipoLabel(x)}`));
+      L.push(`  Subtotal ${g.id}: ${fm(g.m)} m`, '');
+    });
+    L.push('Metros por tipo de mapeo:');
+    const lw = Math.max(...tiposUsados.map(t => t.l.length));
+    tiposUsados.forEach(tu => L.push(`  ${(tu.l + ':').padEnd(lw + 1)} ${fm(tu.m).padStart(7)} m`));
+    L.push(`Total sondajes: ${fm(st.m)} m en ${nIds} ${nIds === 1 ? 'sondaje' : 'sondajes'}`, '');
+  }
+  L.push('=== RESUMEN DEL DÍA ===');
+  if (cut.length) L.push(`  Cutting : ${total} muestras` + (t.PEX && t.HT ? ` (PEX ${t.PEX} · HT ${t.HT})` : ` (${t.PEX ? 'PEX' : 'HT'})`));
+  if (son.length) L.push(`  Sondajes: ${fm(st.m)} m (${nIds} ${nIds === 1 ? 'sondaje' : 'sondajes'})`);
   if (D.obs) L.push('', `Observaciones: ${D.obs}`);
   return L.join('\n');
 }
 
+function hasData(k) { const d = REG[k]; return d && (d.ranges.some(r => rangeInfo(r).ok) || sondTot(d.sond).n > 0); }
 function renderHist() {
   renderProd();
-  const dates = Object.keys(REG).filter(k => REG[k].ranges.some(r => rangeInfo(r).ok)).sort().reverse();
+  const dates = Object.keys(REG).filter(hasData).sort().reverse();
   const now = new Date(); const ym = todayISO().slice(0, 7);
-  const monthTot = dates.filter(d => d.startsWith(ym)).reduce((a, d) => { const t = totals(REG[d].ranges); return a + t.PEX + t.HT; }, 0);
-  const monthDays = dates.filter(d => d.startsWith(ym)).length;
-  $('#histSum').textContent = `${MONTHS[now.getMonth()]}: ${monthTot.toLocaleString('es-CL')} muestras · ${monthDays} ${monthDays === 1 ? 'día' : 'días'}`;
+  const sumM = ds => ds.reduce((a, d) => { const t = totals(REG[d].ranges); return a + t.PEX + t.HT; }, 0);
+  const sumS = ds => ds.reduce((a, d) => a + sondTot(REG[d].sond).m, 0);
+  const mD = dates.filter(d => d.startsWith(ym));
+  $('#histSum').textContent = `${MONTHS[now.getMonth()]}: ${sumM(mD).toLocaleString('es-CL')} muestras · ${fm(sumS(mD))} m · ${mD.length} ${mD.length === 1 ? 'día' : 'días'}`;
   if (!dates.length) { $('#hist').innerHTML = '<div class="empty" style="padding:24px 10px">Aún no hay días registrados.<br>Lo que ingreses a la izquierda aparecerá aquí.</div>'; return; }
   let html = '', lastM = '';
   dates.slice(0, 120).forEach(d => {
     const m = d.slice(0, 7);
     if (m !== lastM) {
-      const mt = dates.filter(x => x.startsWith(m)).reduce((a, x) => { const t = totals(REG[x].ranges); return a + t.PEX + t.HT; }, 0);
-      const [y, mo] = m.split('-'); html += `<div class="month-h"><span>${MONTHS[+mo - 1]} ${y}</span><span>${mt.toLocaleString('es-CL')} muestras</span></div>`; lastM = m;
+      const md = dates.filter(x => x.startsWith(m)); const sm = sumS(md);
+      const [y, mo] = m.split('-'); html += `<div class="month-h"><span>${MONTHS[+mo - 1]} ${y}</span><span>${sumM(md).toLocaleString('es-CL')} muestras${sm ? ' · ' + fm(sm) + ' m' : ''}</span></div>`; lastM = m;
     }
-    const t = totals(REG[d].ranges); const dd = new Date(d + 'T12:00:00');
-    const n = REG[d].ranges.filter(r => rangeInfo(r).ok).length;
+    const t = totals(REG[d].ranges); const st = sondTot(REG[d].sond); const dd = new Date(d + 'T12:00:00');
+    const n = REG[d].ranges.filter(r => rangeInfo(r).ok).length; const T = t.PEX + t.HT;
+    const meta = [n ? `${n} ${n === 1 ? 'rango' : 'rangos'}` : '', t.PEX ? `PEX ${t.PEX}` : '', t.HT ? `HT ${t.HT}` : '', st.n ? `${st.ids.size} ${st.ids.size === 1 ? 'sondaje' : 'sondajes'} · ${fm(st.m)} m` : ''].filter(Boolean).join(' · ');
     html += `<div class="hist-item ${d === REG_DATE ? 'cur' : ''}" data-d="${d}">
       <div class="cal"><b>${d.slice(8)}</b><small>${WD[dd.getDay()]}</small></div>
-      <div><div style="font-weight:500">${dmy(d)}</div><div class="meta">${n} ${n === 1 ? 'rango' : 'rangos'}${t.PEX ? ` · PEX ${t.PEX}` : ''}${t.HT ? ` · HT ${t.HT}` : ''}</div></div>
-      <div class="tot">${(t.PEX + t.HT).toLocaleString('es-CL')}<small>muestras</small></div></div>`;
+      <div><div style="font-weight:500">${dmy(d)}</div><div class="meta">${meta}</div></div>
+      <div class="tot">${T ? T.toLocaleString('es-CL') + '<small>muestras' + (st.m ? ' · ' + fm(st.m) + ' m' : '') + '</small>' : fm(st.m) + ' m<small>sondajes</small>'}</div></div>`;
   });
   $('#hist').innerHTML = html;
 }
-function setRegDate(iso) { cleanEmpty(); saveReg(); REG_DATE = iso; $('#regDate').value = iso; renderRanges(); }
+function setRegDate(iso) { cleanEmpty(); saveReg(); REG_DATE = iso; $('#regDate').value = iso; renderRanges(); renderSonds(); }
 
 $('#ranges').addEventListener('input', e => {
   const inp = e.target.closest('[data-f]'); if (!inp) return;
@@ -1470,32 +1675,43 @@ $('#copyBtn').addEventListener('click', async () => {
   toast('Reporte copiado al portapapeles');
 });
 $('#clearDay').addEventListener('click', async () => {
-  if (!await confirmBox('¿Borrar el registro de este día?', `Se eliminarán todos los rangos del ${dmy(REG_DATE)}.`, 'Borrar')) return;
-  delete REG[REG_DATE]; saveReg(); renderRanges(); toast('Día borrado');
+  if (!await confirmBox('¿Borrar el registro de este día?', `Se eliminarán los rangos de cutting y los tramos de sondaje del ${dmy(REG_DATE)}.`, 'Borrar')) return;
+  delete REG[REG_DATE]; saveReg(); renderRanges(); renderSonds(); toast('Día borrado');
 });
 $('#findId').addEventListener('input', e => {
   const v = e.target.value.toUpperCase().trim(); const m = v.match(/^(PEX|HT)?\s*(\d+)$/);
   if (!v) { $('#findRes').innerHTML = ''; return; }
-  if (!m) { $('#findRes').innerHTML = '<span style="color:var(--muted)">Escribe un ID, ej. PEX100041681</span>'; return; }
-  const num = parseInt(m[2], 10), hits = [];
-  for (const d in REG) REG[d].ranges.forEach(r => { const x = rangeInfo(r); if (x.ok && (!m[1] || m[1] === r.t) && num >= x.a && num <= x.b) hits.push({ d, r, x }); });
-  $('#findRes').innerHTML = hits.length ? hits.sort((a, b) => b.d.localeCompare(a.d)).map(h => `<div style="padding:4px 0">✓ <b class="mono">${h.r.t}${m[2]}</b> → ${dmy(h.d)} <span style="color:var(--muted)">(rango ${h.r.t}${h.x.d} – ${h.r.t}${h.x.h})</span></div>`).join('') : `<span style="color:var(--warn)">No aparece en el historial.</span>`;
+  const out = [];
+  if (m) {
+    const num = parseInt(m[2], 10);
+    for (const d in REG) REG[d].ranges.forEach(r => { const x = rangeInfo(r); if (x.ok && (!m[1] || m[1] === r.t) && num >= x.a && num <= x.b) out.push({ d, html: `✓ <b class="mono">${r.t}${m[2]}</b> → ${dmy(d)} <span style="color:var(--muted)">(rango ${r.t}${x.d} – ${r.t}${x.h})</span>` }); });
+  }
+  if (v.length >= 2) {
+    const q = norm(v);
+    for (const d in REG) { const list = REG[d].sond || []; const inf = sondAnalyze(list); list.forEach((x, i) => { if (inf[i].ok && norm(x.id).includes(q)) out.push({ d, html: `✓ <b class="mono">${esc(x.id)}</b> → ${dmy(d)} <span style="color:var(--muted)">(${fm(inf[i].a)}–${fm(inf[i].b)} m · ${tipoShort(x)})</span>` }); }); }
+  }
+  $('#findRes').innerHTML = out.length ? out.sort((a, b) => b.d.localeCompare(a.d)).slice(0, 30).map(h => `<div style="padding:4px 0">${h.html}</div>`).join('') : `<span style="color:var(--warn)">No aparece en el historial.</span>`;
 });
 function download(name, text, type) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
 $('#expCsv').addEventListener('click', () => {
-  const rows = ['Fecha;Tipo;Desde;Hasta;Cantidad;Observaciones'];
-  Object.keys(REG).sort().forEach(d => REG[d].ranges.forEach(r => { const x = rangeInfo(r); if (x.ok) rows.push(`${dmy(d)};${r.t};${r.t}${x.d};${r.t}${x.h};${x.n};"${(REG[d].obs || '').replace(/"/g, '""')}"`); }));
-  download(`mapeo-cutting-${todayISO()}.csv`, '﻿' + rows.join('\n'), 'text/csv'); toast('CSV exportado');
+  const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  const rows = ['Fecha;Registro;Sondaje;Tipo;Desde;Hasta;Cantidad;Unidad;Observaciones'];
+  Object.keys(REG).sort().forEach(d => {
+    REG[d].ranges.forEach(r => { const x = rangeInfo(r); if (x.ok) rows.push(`${dmy(d)};Cutting;;${r.t};${r.t}${x.d};${r.t}${x.h};${x.n};muestras;${q(REG[d].obs)}`); });
+    const list = REG[d].sond || []; const inf = sondAnalyze(list);
+    list.forEach((x, i) => { if (inf[i].ok) rows.push(`${dmy(d)};Sondaje;${q(x.id.trim())};${tipoLabel(x)};${fm(inf[i].a, 2)};${fm(inf[i].b, 2)};${fm(inf[i].m, 2)};m;${q(REG[d].obs)}`); });
+  });
+  download(`maptik-registro-${todayISO()}.csv`, '﻿' + rows.join('\n'), 'text/csv'); toast('CSV exportado');
 });
-$('#expJson').addEventListener('click', () => { cleanEmpty(); download(`respaldo-mapeo-${todayISO()}.json`, JSON.stringify({ app: 'mapeo-cutting', v: 1, data: REG }, null, 1), 'application/json'); toast('Respaldo descargado'); });
+$('#expJson').addEventListener('click', () => { cleanEmpty(); download(`maptik-respaldo-${todayISO()}.json`, JSON.stringify({ app: 'maptik', v: 2, data: REG }, null, 1), 'application/json'); toast('Respaldo descargado'); });
 $('#impJson').addEventListener('click', () => $('#impFile').click());
 $('#impFile').addEventListener('change', async e => {
   const f = e.target.files[0]; e.target.value = ''; if (!f) return;
   try {
-    const j = JSON.parse(await f.text()); const data = j.data || j; let n = 0;
+    const j = JSON.parse(await f.text()); const data = j.data || j; let n = 0; // acepta respaldos antiguos (mapeo-cutting v1)
     if (!await confirmBox('¿Restaurar respaldo?', `Se combinarán ${Object.keys(data).length} días con tu historial. Si un día ya existe, se reemplaza por el del respaldo.`, 'Restaurar')) return;
     for (const d in data) if (/^\d{4}-\d{2}-\d{2}$/.test(d) && Array.isArray(data[d].ranges)) { REG[d] = data[d]; n++; }
-    saveReg(); renderRanges(); toast(`${n} días restaurados`);
+    saveReg(); renderRanges(); renderSonds(); toast(`${n} días restaurados`);
   } catch (err) { toast('Archivo de respaldo no válido'); }
 });
 
@@ -1583,53 +1799,62 @@ $('#prMode').addEventListener('click', e => { const b = e.target.closest('button
 $('#prReset').addEventListener('click', async () => { if (!PR_HIST.length) return; if (!await confirmBox('¿Reiniciar tu calibración?', `Se borrarán ${PR_HIST.length} intentos guardados.`, 'Reiniciar')) return; PR_HIST = []; store.set('prac.hist', PR_HIST); prStats(); });
 
 /* ============================================================ PRODUCTIVIDAD */
-let PROD = store.get('prod.view', 'd');
+let PROD = store.get('prod.view', 'd'); let PROD_K = store.get('prod.kind', 'cut');
 const MES_C = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 function mondayISO(iso) { const d = new Date(iso + 'T12:00:00'); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return d.toISOString().slice(0, 10); }
-function dayTot(iso) { const d = REG[iso]; return d ? totals(d.ranges) : { PEX: 0, HT: 0 }; }
+const SERIES = {
+  cut: { unit: 'muestras', dec: 0, s: [['PEX', 'PEX · Subterránea', 'var(--s-pex)'], ['HT', 'HT · Rajo', 'var(--s-ht)']], val: k => { const t = totals(REG[k].ranges); return { PEX: t.PEX, HT: t.HT }; } },
+  son: { unit: 'm', dec: 1, s: [['est', 'Estructural', 'var(--s-est)'], ['det', 'Detalle', 'var(--s-det)'], ['ori', 'Orientado', 'var(--s-ori)']], val: k => { const t = sondTot(REG[k].sond); return { est: t.est, det: t.det, ori: t.ori }; } },
+};
 function renderProd() {
-  const today = todayISO(); const keys = Object.keys(REG);
-  const tots = {}; keys.forEach(k => { const t = dayTot(k); if (t.PEX + t.HT) tots[k] = t; });
-  const worked = Object.keys(tots);
-  // KPIs
+  const K = SERIES[PROD_K]; const today = todayISO();
+  const nf = (x, d = K.dec) => d ? fmt(x, d) : Math.round(x).toLocaleString('es-CL');
+  const U = K.unit === 'm' ? ' m' : '';
+  const vals = {}; Object.keys(REG).forEach(k => { const v = K.val(k); const T = K.s.reduce((a, [id]) => a + v[id], 0); if (T > 0) vals[k] = { ...v, T }; });
+  const worked = Object.keys(vals);
   const wk = mondayISO(today), ym = today.slice(0, 7);
-  const sumOf = f => worked.filter(f).reduce((a, k) => a + tots[k].PEX + tots[k].HT, 0);
+  const sumOf = f => worked.filter(f).reduce((a, k) => a + vals[k].T, 0);
   const wTot = sumOf(k => k >= wk && k <= today), wDays = worked.filter(k => k >= wk && k <= today).length;
   const mTot = sumOf(k => k.startsWith(ym)), mDays = worked.filter(k => k.startsWith(ym)).length;
-  let best = null; worked.forEach(k => { const v = tots[k].PEX + tots[k].HT; if (!best || v > best.v) best = { k, v }; });
-  const n = x => x.toLocaleString('es-CL');
+  let best = null; worked.forEach(k => { if (!best || vals[k].T > best.v) best = { k, v: vals[k].T }; });
   $('#kpis').innerHTML = `
-    <div class="res"><div class="k">Esta semana</div><div class="v">${n(wTot)}</div><div class="s">${wDays} ${wDays === 1 ? 'día' : 'días'} trabajados</div></div>
-    <div class="res"><div class="k">Este mes</div><div class="v">${n(mTot)}</div><div class="s">${mDays} ${mDays === 1 ? 'día' : 'días'} trabajados</div></div>
-    <div class="res hl"><div class="k">Promedio por día (mes)</div><div class="v">${mDays ? n(Math.round(mTot / mDays)) : '—'}</div><div class="s">muestras / día trabajado</div></div>
-    <div class="res"><div class="k">Mejor día</div><div class="v">${best ? n(best.v) : '—'}</div><div class="s">${best ? dmy(best.k) : 'sin datos'}</div></div>`;
+    <div class="res"><div class="k">Esta semana</div><div class="v">${nf(wTot)}${U}</div><div class="s">${wDays} ${wDays === 1 ? 'día trabajado' : 'días trabajados'}</div></div>
+    <div class="res"><div class="k">Este mes</div><div class="v">${nf(mTot)}${U}</div><div class="s">${mDays} ${mDays === 1 ? 'día trabajado' : 'días trabajados'}</div></div>
+    <div class="res hl"><div class="k">Promedio por día (mes)</div><div class="v">${mDays ? nf(mTot / mDays) + U : '—'}</div><div class="s">${K.unit === 'm' ? 'metros' : 'muestras'} / día trabajado</div></div>
+    <div class="res"><div class="k">Mejor día</div><div class="v">${best ? nf(best.v) + U : '—'}</div><div class="s">${best ? dmy(best.k) : 'sin datos'}</div></div>`;
   $$('#prodSeg button').forEach(b => b.classList.toggle('on', b.dataset.v === PROD));
-  // buckets
+  $$('#prodKind button').forEach(b => b.classList.toggle('on', b.dataset.v === PROD_K));
+  $('#prodLegend').innerHTML = K.s.map(([, l, c]) => `<span><i style="background:${c}"></i>${l}</span>`).join('');
   const B = [];
   if (PROD === 'd') { for (let i = 13; i >= 0; i--) { const d = shiftISO(today, -i); const dd = new Date(d + 'T12:00:00'); B.push({ lab: d.slice(8), lab2: WD[dd.getDay()][0], tip: `${WD[dd.getDay()]} ${dmy(d)}`, f: k => k === d }); } }
   else if (PROD === 'w') { for (let i = 7; i >= 0; i--) { const m = shiftISO(wk, -7 * i), e = shiftISO(m, 6); B.push({ lab: m.slice(8) + '/' + m.slice(5, 7), tip: `Semana ${dmy(m)} al ${dmy(e)}`, f: k => k >= m && k <= e }); } }
   else { const d0 = new Date(today + 'T12:00:00'); for (let i = 5; i >= 0; i--) { const d = new Date(d0.getFullYear(), d0.getMonth() - i, 1); const y = d.getFullYear(), mo = d.getMonth(); const key = `${y}-${String(mo + 1).padStart(2, '0')}`; B.push({ lab: MES_C[mo], tip: `${MONTHS[mo]} ${y}`, f: k => k.startsWith(key) }); } }
-  B.forEach(b => { b.PEX = 0; b.HT = 0; b.days = 0; worked.filter(b.f).forEach(k => { b.PEX += tots[k].PEX; b.HT += tots[k].HT; b.days++; }); b.T = b.PEX + b.HT; });
+  B.forEach(b => { b.v = {}; K.s.forEach(([id]) => b.v[id] = 0); b.days = 0; worked.filter(b.f).forEach(k => { K.s.forEach(([id]) => b.v[id] += vals[k][id]); b.days++; }); b.T = K.s.reduce((a, [id]) => a + b.v[id], 0); });
   const max = Math.max(0, ...B.map(b => b.T));
   const el = $('#prodChart');
-  if (!max) { el.innerHTML = '<div class="empty" style="padding:28px 8px">Sin muestras en este período.<br>El gráfico se llena a medida que registras días.</div>'; return; }
+  if (!max) { el.innerHTML = `<div class="empty" style="padding:28px 8px">Sin ${K.unit === 'm' ? 'metros de sondaje' : 'muestras de cutting'} en este período.<br>El gráfico se llena a medida que registras días.</div>`; return; }
   const step = (() => { const raw = max / 4; const p = Math.pow(10, Math.floor(Math.log10(raw))); return [1, 2, 2.5, 5, 10].map(x => x * p).find(x => x >= raw); })();
   const yMax = step * Math.ceil(max / step);
-  const W = 600, H = 210, L = 40, R = 6, T = 14, Bm = PROD === 'd' ? 32 : 22, pw = W - L - R, ph = H - T - Bm, bw = pw / B.length, barW = Math.min(34, bw * 0.62);
+  const W = 600, H = 210, L = 44, R = 6, T = 14, Bm = PROD === 'd' ? 32 : 22, pw = W - L - R, ph = H - T - Bm, bw = pw / B.length, barW = Math.min(34, bw * 0.62);
   const y = v => T + ph - v / yMax * ph;
   const top = (x, y0, w, h, r) => { if (h <= 0) return ''; r = Math.min(r, h, w / 2); return `M${x},${y0 + h}V${y0 + r}Q${x},${y0} ${x + r},${y0}H${x + w - r}Q${x + w},${y0} ${x + w},${y0 + r}V${y0 + h}Z`; };
-  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Muestras por período"><g class="grid">`;
+  const flat = (x, y0, w, h) => h > 0 ? `M${x},${y0 + h}V${y0}H${x + w}V${y0 + h}Z` : '';
+  const ax = v => Number.isInteger(v) ? v.toLocaleString('es-CL') : fmt(v, 1);
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${K.unit} por período"><g class="grid">`;
   for (let v = 0; v <= yMax + 1e-9; v += step) svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`;
   svg += `</g><g class="axis">`;
-  for (let v = 0; v <= yMax + 1e-9; v += step) svg += `<text x="${L - 7}" y="${y(v) + 3.5}" text-anchor="end">${n(v)}</text>`;
+  for (let v = 0; v <= yMax + 1e-9; v += step) svg += `<text x="${L - 7}" y="${y(v) + 3.5}" text-anchor="end">${ax(v)}</text>`;
   B.forEach((b, i) => { const cx = L + bw * i + bw / 2; svg += `<text x="${cx}" y="${H - Bm + 14}" text-anchor="middle">${b.lab}</text>`; if (b.lab2) svg += `<text x="${cx}" y="${H - Bm + 26}" text-anchor="middle" style="opacity:.7">${b.lab2}</text>`; });
   svg += `</g>`;
   const maxI = B.findIndex(b => b.T === max);
   B.forEach((b, i) => {
-    const x = L + bw * i + (bw - barW) / 2; const yP = y(b.PEX), hP = T + ph - yP; const yT = y(b.T), gap = b.PEX && b.HT ? 2 : 0;
-    if (b.PEX) svg += `<path d="${b.HT ? `M${x},${yP + hP}V${yP}H${x + barW}V${yP + hP}Z` : top(x, yP, barW, hP, 4)}" fill="var(--s-pex)"/>`;
-    if (b.HT) svg += `<path d="${top(x, yT, barW, yP - yT - gap, 4)}" fill="var(--s-ht)"/>`;
-    if (i === maxI) svg += `<text x="${x + barW / 2}" y="${yT - 5}" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;font-weight:600;fill:var(--text)">${n(b.T)}</text>`;
+    const x = L + bw * i + (bw - barW) / 2; let acc = 0;
+    const segs = K.s.filter(([id]) => b.v[id] > 0);
+    segs.forEach(([id, , c], j) => {
+      const y0 = y(acc + b.v[id]), y1 = y(acc); const last = j === segs.length - 1; const gap = j > 0 ? 2 : 0;
+      svg += `<path d="${last ? top(x, y0, barW, y1 - y0 - gap, 4) : flat(x, y0, barW, y1 - y0 - gap)}" fill="${c}"/>`; acc += b.v[id];
+    });
+    if (i === maxI) svg += `<text x="${x + barW / 2}" y="${y(b.T) - 5}" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;font-weight:600;fill:var(--text)">${nf(b.T)}</text>`;
     svg += `<rect class="bar-hit" data-i="${i}" x="${L + bw * i}" y="${T}" width="${bw}" height="${ph}" rx="4"/>`;
   });
   svg += `<line x1="${L}" x2="${W - R}" y1="${T + ph}" y2="${T + ph}" style="stroke:var(--line-2)"/></svg><div class="ctip" id="ctip"></div>`;
@@ -1638,14 +1863,15 @@ function renderProd() {
   const show = e => {
     const r = e.target.closest('.bar-hit'); if (!r) return; const b = B[+r.dataset.i];
     const box = el.getBoundingClientRect(), rb = r.getBoundingClientRect();
-    tip.innerHTML = `<div style="font-weight:600;margin-bottom:4px">${b.tip}</div><div class="r"><i style="background:var(--s-pex)"></i>PEX <b style="margin-left:auto;padding-left:14px">${n(b.PEX)}</b></div><div class="r"><i style="background:var(--s-ht)"></i>HT <b style="margin-left:auto">${n(b.HT)}</b></div><div class="r" style="border-top:1px solid var(--line);margin-top:4px;padding-top:4px">Total <b style="margin-left:auto">${n(b.T)}</b></div>${PROD !== 'd' ? `<div class="r" style="color:var(--muted);font-size:11px">${b.days} ${b.days === 1 ? 'día' : 'días'} trabajados</div>` : ''}`;
-    const cx = Math.min(Math.max(rb.left + rb.width / 2 - box.left, 70), box.width - 70);
-    const svgEl = $('svg', el); const sc = svgEl.getBoundingClientRect().width / W;
+    tip.innerHTML = `<div style="font-weight:600;margin-bottom:4px">${b.tip}</div>` + K.s.map(([id, l, c], j) => `<div class="r"><i style="background:${c}"></i>${l} <b style="margin-left:auto;padding-left:14px">${nf(b.v[id])}${U}</b></div>`).join('') + `<div class="r" style="border-top:1px solid var(--line);margin-top:4px;padding-top:4px">Total <b style="margin-left:auto">${nf(b.T)}${U}</b></div>${PROD !== 'd' ? `<div class="r" style="color:var(--muted);font-size:11px">${b.days} ${b.days === 1 ? 'día trabajado' : 'días trabajados'}</div>` : ''}`;
+    const cx = Math.min(Math.max(rb.left + rb.width / 2 - box.left, 80), box.width - 80);
+    const sc = $('svg', el).getBoundingClientRect().width / W;
     tip.style.left = cx + 'px'; tip.classList.add('on'); tip.style.top = Math.max(y(b.T) * sc, tip.offsetHeight + 6) + 'px';
   };
   el.onpointerover = show; el.onpointerdown = show; el.onpointerleave = () => tip.classList.remove('on');
 }
 $('#prodSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; PROD = b.dataset.v; store.set('prod.view', PROD); renderProd(); });
+$('#prodKind').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; PROD_K = b.dataset.v; store.set('prod.kind', PROD_K); renderProd(); });
 
 /* ============================================================ PWA */
 let deferredPrompt = null;
@@ -1662,7 +1888,7 @@ Tray.init();
 renderRelRows(); calcRA();
 prSync(); prStats(); setVisMode(VIS_MODE);
 DB.counts().then(c => { PH_COUNTS = c; renderMin(); }).catch(() => renderMin()); renderMin();
-$('#regDate').value = REG_DATE; renderRanges();
+$('#regDate').value = REG_DATE; syncInc(); setRegTab(REG_TAB); renderRanges(); renderSonds();
 go(store.get('ui.view', 'clasif'));
 </script>
 </body>

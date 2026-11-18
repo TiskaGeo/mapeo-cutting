@@ -1,7 +1,8 @@
 {
- "name": "Mapeo Cutting",
- "short_name": "Cutting",
- "description": "Herramientas offline para mapeo geológico de cutting",
+ "name": "Maptik",
+ "short_name": "Maptik",
+ "description": "Herramientas offline para mapeo geológico de cutting y sondajes",
+ "id": "./",
  "lang": "es",
  "start_url": "./",
  "scope": "./",
