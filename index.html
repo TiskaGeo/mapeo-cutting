@@ -330,6 +330,82 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   .det-grid,.prim-head{grid-template-columns:1fr}
   .big-pal{grid-template-columns:repeat(2,1fr)}
 }
+
+/* ===== v2 additions ===== */
+html[data-theme="dark"]{--s-pex:#C8763E;--s-ht:#4F95DE}
+html[data-theme="light"]{--s-pex:#B95E2C;--s-ht:#2F6CB8}
+.ver{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:6px;letter-spacing:.05em}
+/* minerales: color principal */
+.palette.main{display:block;height:110px;position:relative}
+.palette.main .fresh{left:12px;bottom:12px;font-size:11px}
+.palette.main .more{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:4px;padding:4px 7px;border-radius:999px;background:rgba(0,0,0,.35);backdrop-filter:blur(4px)}
+.palette.main .more i{width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.75)}
+.palette.main .more span{font-family:var(--mono);font-size:10.5px;color:#fff;margin-left:2px}
+.main-sw{border-radius:16px;height:150px;position:relative;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.main-sw .lab{position:absolute;left:14px;bottom:14px;color:#fff;background:rgba(0,0,0,.38);backdrop-filter:blur(4px);padding:7px 11px;border-radius:10px}
+.main-sw .lab small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.main-sw .lab b{font-size:16px;font-weight:600}
+.main-sw code{position:absolute;right:14px;top:12px;font-family:var(--mono);font-size:11px;color:#fff;opacity:.85;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.col-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:10px}
+.col-it{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2)}
+.col-it .c{height:74px;position:relative}
+.col-it .c code{position:absolute;right:7px;top:6px;font-family:var(--mono);font-size:10px;color:#fff;opacity:.85;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.col-it .t{padding:8px 10px;font-size:12.5px;line-height:1.3}
+.col-it .t small{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:5px;border:1px solid var(--line-2);color:var(--muted)}
+.col-it .t small.tip0{color:var(--accent);border-color:var(--accent-line);background:var(--accent-weak)}
+.h-sec{margin:22px 0 4px;font-size:15px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.h-sec span{font-weight:400;font-size:12.5px;color:var(--muted)}
+/* práctica */
+.vis-mode{margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.guess{display:flex;gap:10px;align-items:stretch}
+.guess .unit-wrap{flex:1}
+.guess .input{height:64px;font-size:30px;font-family:var(--mono);text-align:center;font-weight:600}
+.guess .unit-wrap::after{font-size:20px;right:18px}
+.guess .btn{min-height:64px;padding:0 22px;font-size:15px}
+.verdict{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;animation:pop .25s var(--ease)}
+.verdict .res .v{font-size:24px}
+.verdict-msg{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:12px;font-weight:500;font-size:14px}
+.verdict-msg.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.verdict-msg.mid{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
+.verdict-msg.bad{background:color-mix(in srgb,var(--err) 13%,transparent);color:var(--err)}
+.mystery{position:absolute;left:50%;top:14px;transform:translateX(-50%);font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:600;letter-spacing:.04em;z-index:2;pointer-events:none}
+.pr-hist{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.pr-row{display:grid;grid-template-columns:58px 1fr 1fr 74px;gap:8px;align-items:center;font-size:12.5px;padding:7px 10px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.pr-row .mono{font-weight:600}
+.err-pill{font-family:var(--mono);font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;text-align:center}
+.err-pill.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.err-pill.mid{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.err-pill.bad{background:color-mix(in srgb,var(--err) 14%,transparent);color:var(--err)}
+.bias{margin-top:10px;padding:11px 13px;border-radius:12px;border:1px dashed var(--line-2);font-size:13.5px;color:var(--text-2)}
+.gtable{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+.gtable td,.gtable th{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}
+.gtable th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.gtable td:first-child,.gtable th:first-child{text-align:left}
+.gtable tr:last-child td{border-bottom:0}
+/* productividad */
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.kpis .res .v{font-size:22px}
+.kpis .res .s{font-size:11.5px;color:var(--muted);margin-top:1px}
+.chart-wrap{position:relative;margin-top:14px}
+.chart-wrap svg{display:block;width:100%;height:auto;overflow:visible}
+.chart-wrap .axis text{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+.chart-wrap .grid line{stroke:var(--line);stroke-width:1}
+.chart-wrap .bar-hit{fill:transparent;cursor:pointer}
+.chart-wrap .bar-hit:hover{fill:var(--grid-dot)}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--text-2);margin-top:8px;align-items:center;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.ctip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:8px 10px;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);white-space:nowrap;transform:translate(-50%,calc(-100% - 10px));opacity:0;transition:opacity .12s;z-index:3}
+.ctip.on{opacity:1}
+.ctip b{font-family:var(--mono)}
+.ctip .r{display:flex;align-items:center;gap:6px;color:var(--text-2)}
+.ctip .r i{width:8px;height:8px;border-radius:2px;display:inline-block}
+
+.palette.main .fresh{max-width:calc(100% - 200px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.col-it{cursor:pointer;text-align:left;padding:0;transition:transform .15s var(--ease),border-color .15s}
+.col-it:active{transform:scale(.97)}
+.col-it.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.col-it .pin{position:absolute;left:7px;bottom:6px;font-size:10.5px;font-weight:600;color:#fff;background:rgba(0,0,0,.42);padding:2px 7px;border-radius:6px;backdrop-filter:blur(3px)}
 </style>
 </head>
 <body>
@@ -345,6 +421,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <div class="spacer"></div>
     <button class="install-btn" id="installBtn">Instalar app</button>
     <button class="icon-btn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema"></button>
+    <div class="ver">v3</div>
   </nav>
 
   <main>
@@ -377,9 +454,13 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
       <!-- ============ % VISUAL ============ -->
       <section class="view" id="view-visual">
+        <div class="vis-mode">
+          <div class="seg" id="visMode"><button data-v="ref">Referencia</button><button data-v="prac">Práctica de estimación</button></div>
+          <span class="hint" id="visModeHint" style="color:var(--muted);font-size:12.5px"></span>
+        </div>
         <div class="visual">
           <div class="card tray-card">
-            <div class="tray-stage" id="trayStage"><canvas id="tray"></canvas></div>
+            <div class="tray-stage" id="trayStage"><canvas id="tray"></canvas><div class="mystery" id="mystery" hidden>¿QUÉ % VES?</div></div>
             <div class="tray-meta">
               <span>Cobertura medida <b id="measured">—</b></span>
               <span><b id="nPart">—</b> partículas</span>
@@ -387,7 +468,37 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
             </div>
           </div>
 
-          <div class="stack">
+          <div class="stack" id="visPrac" hidden>
+            <div class="card">
+              <div class="card-b" style="padding-top:18px">
+                <div class="eyebrow">Tu estimación</div>
+                <div class="guess" style="margin-top:10px">
+                  <div class="unit-wrap"><input class="input" id="prGuess" type="number" inputmode="decimal" min="0" max="100" step="0.5" placeholder="?"></div>
+                  <button class="btn primary" id="prCheck">Comprobar</button>
+                </div>
+                <div id="prVerdict"></div>
+                <div class="row" style="margin-top:12px"><button class="btn" id="prNext" style="flex:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Nueva bandeja</button></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-b" style="padding-top:16px">
+                <div class="ctl">
+                  <span>Rango de %</span>
+                  <div class="seg" id="prRange"><button data-v="15">1–15</button><button data-v="30">1–30</button><button data-v="50">1–50</button></div>
+                  <span>Tamaño grano</span>
+                  <div class="seg" id="prGrano"><button data-v="azar">Al azar</button><button data-v="fino">Fino</button><button data-v="medio">Medio</button><button data-v="grueso">Grueso</button></div>
+                  <span>Distribución</span>
+                  <div class="seg" id="prMode"><button data-v="disperso">Disperso</button><button data-v="agrupado">Agrupado</button><button data-v="azar">Al azar</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-h"><h3>Tu calibración</h3><div style="flex:1"></div><button class="btn sm ghost" id="prReset">Reiniciar</button></div>
+              <div class="card-b" id="prStats"></div>
+            </div>
+          </div>
+
+          <div class="stack" id="visRef">
             <div class="card">
               <div class="card-b" style="padding-top:18px">
                 <div class="eyebrow">Porcentaje de la bandeja</div>
@@ -505,6 +616,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           </div>
 
           <div class="stack">
+            <div class="card">
+              <div class="card-h"><h3>Productividad</h3><div style="flex:1"></div>
+                <div class="seg" id="prodSeg"><button data-v="d">14 días</button><button data-v="w">8 semanas</button><button data-v="m">6 meses</button></div>
+              </div>
+              <div class="card-b">
+                <div class="kpis" id="kpis"></div>
+                <div class="chart-wrap" id="prodChart"></div>
+                <div class="legend"><span><i style="background:var(--s-pex)"></i>PEX · Subterránea</span><span><i style="background:var(--s-ht)"></i>HT · Rajo</span></div>
+              </div>
+            </div>
             <div class="card">
               <div class="card-h"><h3>Historial</h3><div style="flex:1"></div><span class="hint" id="histSum"></span></div>
               <div class="card-b">
@@ -659,6 +780,23 @@ const MINERALES = {
   ]
 };
 
+
+/* Colores según las descripciones de mindat.org (color principal + otros observables) */
+const COLORES = {
+  cpy: { main: ['#C9A73E', 'Amarillo latón'], cols: [['#C9A73E', 'Amarillo latón', 'Típico'], ['#C89A3A', 'Amarillo miel', 'Frecuente'], ['#B8862F', 'Latón dorado / empañado', 'Pátina'], ['#3F62AE', 'Iridiscencia azul', 'Pátina'], ['#6A4C9E', 'Iridiscencia púrpura', 'Pátina'], ['#B9653A', 'Iridiscencia rojo-anaranjada', 'Pátina']] },
+  py: { main: ['#D4C37E', 'Amarillo latón pálido'], cols: [['#D4C37E', 'Amarillo latón pálido', 'Típico'], ['#C3B064', 'Latón pálido en sombra', 'Frecuente'], ['#A88F54', 'Empañada parda', 'Pátina'], ['#5D7AAE', 'Pátina iridiscente', 'Ocasional']] },
+  bn: { main: ['#B5623A', 'Rojo cobrizo'], cols: [['#B5623A', 'Rojo cobrizo', 'Típico'], ['#8D5A3A', 'Pardo bronce', 'Frecuente'], ['#A2898B', 'Gris rosado', 'Pátina'], ['#6A3D8C', 'Púrpura iridiscente', 'Pátina'], ['#9A2F47', 'Carmesí', 'Pátina'], ['#2E4C98', 'Azul iridiscente', 'Pátina'], ['#1F1E23', 'Negro (alteración avanzada)', 'Pátina']] },
+  cc: { main: ['#4C5157', 'Gris acero oscuro'], cols: [['#6D7277', 'Gris acero', 'Típico'], ['#4C5157', 'Gris oscuro', 'Típico'], ['#3A3D42', 'Gris negruzco', 'Frecuente'], ['#26303F', 'Negro azulado', 'Frecuente'], ['#18191B', 'Negro (tipo hollín)', 'Frecuente']] },
+  dg: { main: ['#3D4655', 'Gris azulado oscuro'], cols: [['#5F656D', 'Gris', 'Típico'], ['#35393F', 'Gris negruzco', 'Típico'], ['#2F4C86', 'Azulado (expuesta al aire)', 'Frecuente'], ['#25335A', 'Azul oscuro', 'Ocasional']] },
+  cv: { main: ['#2B3A8C', 'Azul índigo'], cols: [['#2B3A8C', 'Azul índigo', 'Típico'], ['#1A2142', 'Azul negruzco', 'Frecuente'], ['#5A3D8D', 'Reflejos púrpura', 'Iridiscencia'], ['#8E2A3A', 'Reflejos rojo intenso', 'Iridiscencia'], ['#B39A46', 'Reflejos amarillo latón', 'Iridiscencia']] },
+  en: { main: ['#3B3C41', 'Gris negruzco'], cols: [['#3B3C41', 'Gris negruzco', 'Típico'], ['#1C1C1F', 'Negro', 'Frecuente'], ['#5A5C62', 'Gris acero (caras de clivaje)', 'Frecuente'], ['#8C736C', 'Pardo rosado', 'Luz reflejada']] },
+  mlc: { main: ['#2E9A5C', 'Verde brillante'], cols: [['#2E9A5C', 'Verde brillante', 'Típico'], ['#5CBB85', 'Verde claro', 'Frecuente'], ['#9CC9A2', 'Verde pálido terroso', 'Frecuente'], ['#1D6E43', 'Verde profundo (cristales)', 'Ocasional'], ['#0E3D26', 'Verde muy oscuro a casi negro', 'Raro']] },
+  atc: { main: ['#1E6A46', 'Verde esmeralda oscuro'], cols: [['#1E6A46', 'Verde esmeralda oscuro', 'Típico'], ['#2E8A57', 'Verde brillante', 'Frecuente'], ['#0F3A26', 'Verde negruzco', 'Frecuente']] },
+  bct: { main: ['#2D8A5A', 'Verde esmeralda'], cols: [['#2D8A5A', 'Verde esmeralda', 'Típico'], ['#3C9C66', 'Verde', 'Frecuente'], ['#62B585', 'Verde claro', 'Frecuente'], ['#163F2B', 'Verde negruzco', 'Ocasional']] },
+  ccl: { main: ['#38A39F', 'Verde azulado'], cols: [['#38A39F', 'Verde azulado', 'Típico'], ['#4FAE7C', 'Verde', 'Frecuente'], ['#3C8FC6', 'Azul / celeste', 'Frecuente'], ['#1E3550', 'Azul negruzco', 'Ocasional'], ['#171D26', 'Negro', 'Ocasional'], ['#8A6A48', 'Pardo', 'Ocasional'], ['#C9B458', 'Amarillo', 'Raro']] },
+};
+[...MINERALES.sulf, ...MINERALES.ox].forEach(m => Object.assign(m, COLORES[m.id]));
+
 /* ============================================================ NAV / THEME */
 const VIEWS = {
   clasif: ['Tablas de clasificación', 'Zonas minerales, unidades de alteración y asociaciones de mena'],
@@ -765,7 +903,8 @@ const Tray = (() => {
   const GRAIN = { fino: 6.5, medio: 12.5, grueso: 22 };
   const MS = 0.5; // mask scale
   const S = Object.assign({ pct: 10, mode: 'disperso', grano: 'medio', fondo: 'blanco', ref: false, grid: false, seed: 12345 }, store.get('vis.state', {}));
-  let parts = [], refParts = [], measured = 0;
+  let parts = [], refParts = [], measured = 0, P = null;
+  function readout() { const hide = P && !P.revealed; $('#measured').textContent = hide ? '? %' : fmt(measured * 100, 1) + ' %'; $('#nPart').textContent = hide ? '—' : parts.length.toLocaleString('es-CL'); }
   const cv = $('#tray'); const ctx = cv.getContext('2d');
   const mask = document.createElement('canvas'); mask.width = Math.round(IW * MS); mask.height = Math.round(IH * MS);
   const mctx = mask.getContext('2d', { willReadFrequently: true });
@@ -794,10 +933,10 @@ const Tray = (() => {
   function polyPath(c, p, s, ox, oy) { c.beginPath(); p.pts.forEach(([x, y], i) => { const X = ox + (p.x + x) * s, Y = oy + (p.y + y) * s; i ? c.lineTo(X, Y) : c.moveTo(X, Y); }); c.closePath(); }
 
   function generate() {
-    const t0 = performance.now();
-    const rng = mulberry32(S.seed * 7919 + Math.round(S.pct * 10) * 0 + { fino: 1, medio: 2, grueso: 3 }[S.grano] * 104729 + (S.mode === 'agrupado' ? 31 : 0));
-    const base = GRAIN[S.grano];
-    const target = S.pct / 100;
+    const t0 = performance.now(); const C = P || S;
+    const rng = mulberry32(C.seed * 7919 + Math.round(C.pct * 10) * 0 + { fino: 1, medio: 2, grueso: 3 }[C.grano] * 104729 + (C.mode === 'agrupado' ? 31 : 0));
+    const base = GRAIN[C.grano];
+    const target = C.pct / 100;
     parts = [];
     const CELL = base * 4; const grid = new Map();
     const key = (gx, gy) => gx + ',' + gy;
@@ -822,19 +961,19 @@ const Tray = (() => {
     while (guard++ < 80) {
       cov = measure();
       const deficit = target - cov;
-      if (S.mode === 'agrupado' && prev >= 0 && cov - prev < deficit * 0.25) { el.ax *= 1.05; el.ay *= 1.05; }
+      if (C.mode === 'agrupado' && prev >= 0 && cov - prev < deficit * 0.25) { el.ax *= 1.05; el.ay *= 1.05; }
       prev = cov;
       if (deficit <= 0.0004) break;
       const deficitArea = deficit * Ai;
       const avgA = Math.PI * base * base * 0.55;
-      let n = Math.max(1, Math.ceil(deficitArea / avgA * (S.mode === 'agrupado' ? 0.9 : 0.85)));
+      let n = Math.max(1, Math.ceil(deficitArea / avgA * (C.mode === 'agrupado' ? 0.9 : 0.85)));
       let acc = 0;
       for (let k = 0; k < n; k++) {
         let p = makeParticle(rng, base * (0.6 + rng() * 0.75));
         const left = deficitArea - acc;
         if (left < p.area * 0.9) { if (left < 6) break; scaleP(p, Math.sqrt(Math.max(left, 6) / p.area)); }
         let placed = false;
-        if (S.mode === 'disperso') {
+        if (C.mode === 'disperso') {
           for (let tries = 0; tries < 45 && !placed; tries++) {
             const x = rng() * IW, y = rng() * IH;
             if (!insideInterior(x, y, p.R * .75)) continue;
@@ -862,13 +1001,12 @@ const Tray = (() => {
     mctx.restore();
     measured = measure();
     // reference (background) clasts, independent of pct
-    const r2 = mulberry32(S.seed * 31 + 7); refParts = [];
-    const rb = GRAIN[S.grano] * 1.05;
+    const r2 = mulberry32(C.seed * 31 + 7); refParts = [];
+    const rb = GRAIN[C.grano] * 1.05;
     for (let i = 0; i < Math.round(IW * IH * 0.42 / (Math.PI * rb * rb * 0.6)); i++) {
       const p = makeParticle(r2, rb * (0.6 + r2() * 0.8)); p.x = r2() * IW; p.y = r2() * IH; p.tone = r2(); refParts.push(p);
     }
-    $('#measured').textContent = fmt(measured * 100, 1) + ' %';
-    $('#nPart').textContent = parts.length.toLocaleString('es-CL');
+    readout();
     draw();
   }
 
@@ -905,7 +1043,7 @@ const Tray = (() => {
     for (const p of parts) {
       polyPath(ctx, p, s, ix, iy); const v = 14 + p.shade; ctx.fillStyle = `rgb(${v},${v},${v})`; ctx.fill();
     }
-    if (S.grid) {
+    if (S.grid && !P) {
       ctx.strokeStyle = 'rgba(201,139,99,.55)'; ctx.lineWidth = Math.max(1, 1.4 * s * 1.5);
       ctx.beginPath();
       for (let i = 1; i < 10; i++) { const x = ix + IW * s * i / 10, y = iy + IH * s * i / 10; ctx.moveTo(x, iy); ctx.lineTo(x, iy + IH * s); ctx.moveTo(ix, y); ctx.lineTo(ix + IW * s, y); }
@@ -927,7 +1065,7 @@ const Tray = (() => {
 
   let pend = 0;
   function schedule() { cancelAnimationFrame(pend); pend = requestAnimationFrame(generate); }
-  function set(k, v) { S[k] = v; store.set('vis.state', S); syncUI(); if (k === 'fondo' || k === 'ref' || k === 'grid') draw(); else schedule(); }
+  function set(k, v) { if (P) return; S[k] = v; store.set('vis.state', S); syncUI(); if (k === 'fondo' || k === 'ref' || k === 'grid') draw(); else schedule(); }
   function syncUI() {
     const p = S.pct;
     $('#pctBig').innerHTML = (Number.isInteger(p) ? p : fmt(p, 1)) + '<small>%</small>';
@@ -956,7 +1094,10 @@ const Tray = (() => {
     new ResizeObserver(() => resize()).observe($('#trayStage'));
     generate();
   }
-  return { init, resize, draw };
+  function practice(p) { P = p; cancelAnimationFrame(pend); generate(); }
+  function reveal() { if (P) { P.revealed = true; readout(); } }
+  function reference() { if (!P) return; P = null; generate(); }
+  return { init, resize, draw, practice, reveal, reference, get measured() { return measured; } };
 })();
 window.Tray = Tray;
 
@@ -1024,12 +1165,15 @@ async function resizeImage(file, max = 1600) {
 
 /* ============================================================ MINERALES */
 let MIN_TAB = store.get('min.tab', 'sulf'); let PH_COUNTS = {};
+const MAIN_OV = store.get('min.main', {}); // colores principales elegidos por el usuario
+function mainOf(m) { const h = MAIN_OV[m.id]; const c = h && m.cols.find(c => c[0] === h); return c ? [c[0], c[1]] : m.main; }
 const allMin = () => [...MINERALES.sulf, ...MINERALES.ox];
 function renderMin() {
   $$('#minTabs button').forEach(b => b.classList.toggle('on', b.dataset.t === MIN_TAB));
   $('#minGrid').innerHTML = MINERALES[MIN_TAB].map(m => `
     <article class="card mineral" data-id="${m.id}">
-      <div class="palette">${m.pal.map(([c, l]) => `<div style="background:${c}" title="${esc(l)} ${c}"></div>`).join('')}<span class="fresh">${esc(m.pal[0][1])}</span></div>
+      <div class="palette main" style="background:${mainOf(m)[0]}"><span class="fresh">${MAIN_OV[m.id] ? '★ ' : ''}${esc(mainOf(m)[1])}</span>
+        <span class="more">${m.cols.filter(c => c[0] !== mainOf(m)[0]).slice(0, 4).map(c => `<i style="background:${c[0]}"></i>`).join('')}<span>+${m.cols.filter(c => c[0] !== mainOf(m)[0]).length} colores</span></span></div>
       <div class="min-body">
         <div class="min-title"><h4>${m.nombre}</h4><span class="abbr">${m.abbr}</span></div>
         <div class="formula">${m.f}</div>
@@ -1068,7 +1212,7 @@ async function openMineral(m, scrollPhotos) {
     <div class="modal-h"><div><div class="eyebrow">${MINERALES.sulf.includes(m) ? 'Sulfuro' : 'Óxido de cobre'} · mindat #${m.mindat}</div><h3>${m.nombre} <span class="abbr" style="vertical-align:3px;margin-left:6px">${m.abbr}</span></h3></div><div style="flex:1"></div>
       <button class="icon-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
     <div class="modal-b">
-      <div class="big-pal">${m.pal.map(([c, l]) => `<div class="c" style="background:${c}"><code>${c}</code><span>${esc(l)}</span></div>`).join('')}</div>
+      <div id="colSec"></div>
       <div class="det-grid">
         <div class="det-list">
           <span class="k">Fórmula</span><span class="formula">${m.f}</span>
@@ -1090,9 +1234,24 @@ async function openMineral(m, scrollPhotos) {
         <div class="photos" id="photos"></div>
       </div>
     </div>`;
+  renderColSec(m);
   openScrim();
   await renderPhotos();
   if (scrollPhotos) $('#photoSec').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function renderColSec(m) {
+  const mc = mainOf(m), own = !!MAIN_OV[m.id];
+  $('#colSec').innerHTML = `
+    <div class="main-sw" style="background:${mc[0]}"><code>${mc[0]}</code><div class="lab"><small>Color principal${own ? ' · elegido por ti' : ' · mindat'}</small><b>${esc(mc[1])}</b></div>
+      ${own ? '<button class="btn sm" data-restore style="position:absolute;right:14px;bottom:14px">Restaurar original</button>' : ''}</div>
+    <div class="h-sec"><b>Colores posibles de observar</b><span>Toca un color para dejarlo como principal</span></div>
+    <div class="col-grid">${m.cols.map(([c, l, t]) => `<button class="col-it ${c === mc[0] ? 'sel' : ''}" data-hex="${c}"><div class="c" style="background:${c}"><code>${c}</code>${c === mc[0] ? '<span class="pin">★ Principal</span>' : ''}</div><div class="t">${esc(l)}<br><small class="${t === 'Típico' ? 'tip0' : ''}">${esc(t)}</small></div></button>`).join('')}</div>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">Colores según mindat.org · el tono real varía con la luz y la alteración.</div>`;
+}
+function setMain(m, hex) {
+  if (!hex || hex === m.main[0]) delete MAIN_OV[m.id]; else MAIN_OV[m.id] = hex;
+  store.set('min.main', MAIN_OV); renderColSec(m); renderMin();
+  toast(MAIN_OV[m.id] ? 'Color principal actualizado' : 'Color original restaurado');
 }
 async function renderPhotos() {
   objURLs.splice(0).forEach(u => URL.revokeObjectURL(u));
@@ -1105,6 +1264,8 @@ async function renderPhotos() {
 }
 $('#modal').addEventListener('click', async e => {
   if (e.target.closest('[data-close]')) return closeScrim();
+  const ch = e.target.closest('[data-hex]'); if (ch) return setMain(CUR_MIN, ch.dataset.hex);
+  if (e.target.closest('[data-restore]')) return setMain(CUR_MIN, null);
   const md = e.target.closest('[data-mindat]'); if (md) return openMindat(CUR_MIN, md.dataset.mindat === '1');
   if (e.target.closest('#addPh')) return $('#phFile').click();
   const ph = e.target.closest('.ph'); if (ph) { $('#lbImg').src = $('img', ph).src; $('#lightbox').dataset.id = ph.dataset.id; $('#lightbox').classList.add('open'); }
@@ -1234,6 +1395,7 @@ function buildReport(iso, f) {
 }
 
 function renderHist() {
+  renderProd();
   const dates = Object.keys(REG).filter(k => REG[k].ranges.some(r => rangeInfo(r).ok)).sort().reverse();
   const now = new Date(); const ym = todayISO().slice(0, 7);
   const monthTot = dates.filter(d => d.startsWith(ym)).reduce((a, d) => { const t = totals(REG[d].ranges); return a + t.PEX + t.HT; }, 0);
@@ -1336,11 +1498,159 @@ $('#impFile').addEventListener('change', async e => {
   } catch (err) { toast('Archivo de respaldo no válido'); }
 });
 
+
+/* ============================================================ PRÁCTICA DE ESTIMACIÓN */
+const PR = Object.assign({ range: 30, grano: 'azar', mode: 'disperso' }, store.get('prac.cfg', {}));
+let PR_HIST = store.get('prac.hist', []);
+let prCur = null; let VIS_MODE = store.get('vis.mode', 'ref');
+const GR_N = { fino: 'Fino', medio: 'Medio', grueso: 'Grueso' };
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const tolOf = real => Math.max(1, real * 0.15);
+const errCls = (e, real) => Math.abs(e) <= tolOf(real) ? 'ok' : Math.abs(e) <= tolOf(real) * 2 ? 'mid' : 'bad';
+const sgn = (v, d = 1) => (v > 0 ? '+' : v < 0 ? '−' : '±') + fmt(Math.abs(v), d);
+
+function setVisMode(m) {
+  VIS_MODE = m; store.set('vis.mode', m);
+  $$('#visMode button').forEach(b => b.classList.toggle('on', b.dataset.v === m));
+  const prac = m === 'prac';
+  $('#visPrac').hidden = !prac; $('#visRef').hidden = prac; $('#regen').hidden = prac;
+  $('#visModeHint').textContent = prac ? 'Estima el % de partículas negras y compruébalo. La cuadrícula se oculta durante la práctica.' : '';
+  if (prac) { if (!prCur || prCur.done) prNew(); else { Tray.practice(prCur.p); $('#mystery').hidden = false; } }
+  else { $('#mystery').hidden = true; Tray.reference(); }
+}
+function prSync() {
+  $$('#prRange button').forEach(b => b.classList.toggle('on', +b.dataset.v === PR.range));
+  $$('#prGrano button').forEach(b => b.classList.toggle('on', b.dataset.v === PR.grano));
+  $$('#prMode button').forEach(b => b.classList.toggle('on', b.dataset.v === PR.mode));
+}
+function prNew() {
+  const real = 1 + Math.floor(Math.random() * PR.range);
+  const grano = PR.grano === 'azar' ? pick(['fino', 'medio', 'grueso']) : PR.grano;
+  const mode = PR.mode === 'azar' ? pick(['disperso', 'disperso', 'agrupado']) : PR.mode;
+  prCur = { real, grano, mode, done: false, p: { pct: real, grano, mode, seed: Math.floor(Math.random() * 1e6), revealed: false } };
+  Tray.practice(prCur.p);
+  $('#mystery').hidden = false; $('#prVerdict').innerHTML = ''; const g = $('#prGuess'); g.value = ''; g.disabled = false; $('#prCheck').disabled = false;
+}
+function prCheck() {
+  if (!prCur || prCur.done) return;
+  const est = parseFloat(String($('#prGuess').value).replace(',', '.'));
+  if (isNaN(est) || est < 0 || est > 100) { toast('Escribe tu estimación (0–100 %)'); $('#prGuess').focus(); return; }
+  const real = Math.round(Tray.measured * 1000) / 10; const e = est - real; const c = errCls(e, real);
+  prCur.done = true; Tray.reveal(); $('#mystery').hidden = true; $('#prGuess').disabled = true; $('#prCheck').disabled = true;
+  PR_HIST.push({ t: Date.now(), real, est, grano: prCur.grano, mode: prCur.mode }); if (PR_HIST.length > 1000) PR_HIST = PR_HIST.slice(-1000); store.set('prac.hist', PR_HIST);
+  const msg = c === 'ok' ? `✓ Bien estimado: dentro de ±${fmt(tolOf(real), 1)} puntos` : `${c === 'mid' ? 'Cerca' : 'Lejos'}: ${e > 0 ? 'sobreestimaste' : 'subestimaste'} por ${fmt(Math.abs(e), 1)} puntos`;
+  $('#prVerdict').innerHTML = `<div class="verdict">
+    <div class="res hl"><div class="k">Real</div><div class="v">${fmt(real, 1)} %</div></div>
+    <div class="res"><div class="k">Tu estimación</div><div class="v">${fmt(est, est % 1 ? 1 : 0)} %</div></div>
+    <div class="res"><div class="k">Diferencia</div><div class="v">${sgn(e)}</div></div>
+    <div class="verdict-msg ${c}">${msg}</div>
+    <div style="grid-column:1/-1;font-size:12.5px;color:var(--muted)">Grano ${GR_N[prCur.grano].toLowerCase()} · ${prCur.mode}</div></div>`;
+  prStats();
+}
+function prStats() {
+  const H = PR_HIST; const el = $('#prStats');
+  if (!H.length) { el.innerHTML = '<div class="empty" style="padding:18px 6px">Aún no hay intentos. Estima la bandeja y presiona “Comprobar”.</div>'; return; }
+  const agg = arr => { const n = arr.length; if (!n) return null; const mae = arr.reduce((a, x) => a + Math.abs(x.est - x.real), 0) / n; const bias = arr.reduce((a, x) => a + (x.est - x.real), 0) / n; const hit = arr.filter(x => errCls(x.est - x.real, x.real) === 'ok').length / n * 100; return { n, mae, bias, hit }; };
+  const all = agg(H), last = agg(H.slice(-20));
+  const bTxt = b => Math.abs(b) < 0.5 ? 'sin sesgo marcado' : b > 0 ? `tiendes a <b>sobreestimar</b> (${sgn(b)} pts en promedio)` : `tiendes a <b>subestimar</b> (${sgn(b)} pts en promedio)`;
+  const row = (lab, a) => a ? `<tr><td>${lab}</td><td>${a.n}</td><td>${fmt(a.mae, 1)}</td><td>${sgn(a.bias)}</td><td>${fmt(a.hit, 0)} %</td></tr>` : `<tr><td>${lab}</td><td colspan="4" style="color:var(--muted)">—</td></tr>`;
+  el.innerHTML = `
+    <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
+      <div class="res"><div class="k">Intentos</div><div class="v">${all.n}</div></div>
+      <div class="res"><div class="k">Error medio</div><div class="v">${fmt(all.mae, 1)}<small style="font-size:12px;color:var(--muted)"> pts</small></div></div>
+      <div class="res hl"><div class="k">Aciertos</div><div class="v">${fmt(all.hit, 0)} %</div></div>
+    </div>
+    <div class="bias">En general ${bTxt(all.bias)}.${H.length > 20 ? ` Últimos 20 intentos: error medio ${fmt(last.mae, 1)} pts, ${fmt(last.hit, 0)} % de aciertos.` : ''}</div>
+    <div class="lbl">Por tamaño de grano</div>
+    <table class="gtable"><tr><th></th><th>n</th><th>Error</th><th>Sesgo</th><th>Aciertos</th></tr>
+      ${['fino', 'medio', 'grueso'].map(g => row(GR_N[g], agg(H.filter(x => x.grano === g)))).join('')}</table>
+    <div class="lbl">Por rango de %</div>
+    <table class="gtable"><tr><th></th><th>n</th><th>Error</th><th>Sesgo</th><th>Aciertos</th></tr>
+      ${[[0, 10, '≤ 10 %'], [10, 25, '10 – 25 %'], [25, 101, '> 25 %']].map(([a, b, l]) => row(l, agg(H.filter(x => x.real > a && x.real <= b)))).join('')}</table>
+    <div class="lbl">Últimos intentos</div>
+    <div class="pr-hist">${H.slice(-6).reverse().map(x => `<div class="pr-row"><span style="color:var(--muted)">${GR_N[x.grano]}</span><span>Real <span class="mono">${fmt(x.real, 1)}%</span></span><span>Tú <span class="mono">${fmt(x.est, x.est % 1 ? 1 : 0)}%</span></span><span class="err-pill ${errCls(x.est - x.real, x.real)}">${sgn(x.est - x.real)}</span></div>`).join('')}</div>
+    <div style="font-size:11.5px;color:var(--muted);margin-top:10px">Acierto = error dentro de ±15 % del valor real (mínimo ±1 punto).</div>`;
+}
+$('#visMode').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setVisMode(b.dataset.v); });
+$('#prCheck').addEventListener('click', prCheck);
+$('#prNext').addEventListener('click', () => { prNew(); $('#prGuess').focus(); });
+$('#prGuess').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); prCur && prCur.done ? prNew() : prCheck(); } });
+const prCfg = (k, v) => { PR[k] = k === 'range' ? +v : v; store.set('prac.cfg', PR); prSync(); prNew(); };
+$('#prRange').addEventListener('click', e => { const b = e.target.closest('button'); if (b) prCfg('range', b.dataset.v); });
+$('#prGrano').addEventListener('click', e => { const b = e.target.closest('button'); if (b) prCfg('grano', b.dataset.v); });
+$('#prMode').addEventListener('click', e => { const b = e.target.closest('button'); if (b) prCfg('mode', b.dataset.v); });
+$('#prReset').addEventListener('click', async () => { if (!PR_HIST.length) return; if (!await confirmBox('¿Reiniciar tu calibración?', `Se borrarán ${PR_HIST.length} intentos guardados.`, 'Reiniciar')) return; PR_HIST = []; store.set('prac.hist', PR_HIST); prStats(); });
+
+/* ============================================================ PRODUCTIVIDAD */
+let PROD = store.get('prod.view', 'd');
+const MES_C = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+function mondayISO(iso) { const d = new Date(iso + 'T12:00:00'); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return d.toISOString().slice(0, 10); }
+function dayTot(iso) { const d = REG[iso]; return d ? totals(d.ranges) : { PEX: 0, HT: 0 }; }
+function renderProd() {
+  const today = todayISO(); const keys = Object.keys(REG);
+  const tots = {}; keys.forEach(k => { const t = dayTot(k); if (t.PEX + t.HT) tots[k] = t; });
+  const worked = Object.keys(tots);
+  // KPIs
+  const wk = mondayISO(today), ym = today.slice(0, 7);
+  const sumOf = f => worked.filter(f).reduce((a, k) => a + tots[k].PEX + tots[k].HT, 0);
+  const wTot = sumOf(k => k >= wk && k <= today), wDays = worked.filter(k => k >= wk && k <= today).length;
+  const mTot = sumOf(k => k.startsWith(ym)), mDays = worked.filter(k => k.startsWith(ym)).length;
+  let best = null; worked.forEach(k => { const v = tots[k].PEX + tots[k].HT; if (!best || v > best.v) best = { k, v }; });
+  const n = x => x.toLocaleString('es-CL');
+  $('#kpis').innerHTML = `
+    <div class="res"><div class="k">Esta semana</div><div class="v">${n(wTot)}</div><div class="s">${wDays} ${wDays === 1 ? 'día' : 'días'} trabajados</div></div>
+    <div class="res"><div class="k">Este mes</div><div class="v">${n(mTot)}</div><div class="s">${mDays} ${mDays === 1 ? 'día' : 'días'} trabajados</div></div>
+    <div class="res hl"><div class="k">Promedio por día (mes)</div><div class="v">${mDays ? n(Math.round(mTot / mDays)) : '—'}</div><div class="s">muestras / día trabajado</div></div>
+    <div class="res"><div class="k">Mejor día</div><div class="v">${best ? n(best.v) : '—'}</div><div class="s">${best ? dmy(best.k) : 'sin datos'}</div></div>`;
+  $$('#prodSeg button').forEach(b => b.classList.toggle('on', b.dataset.v === PROD));
+  // buckets
+  const B = [];
+  if (PROD === 'd') { for (let i = 13; i >= 0; i--) { const d = shiftISO(today, -i); const dd = new Date(d + 'T12:00:00'); B.push({ lab: d.slice(8), lab2: WD[dd.getDay()][0], tip: `${WD[dd.getDay()]} ${dmy(d)}`, f: k => k === d }); } }
+  else if (PROD === 'w') { for (let i = 7; i >= 0; i--) { const m = shiftISO(wk, -7 * i), e = shiftISO(m, 6); B.push({ lab: m.slice(8) + '/' + m.slice(5, 7), tip: `Semana ${dmy(m)} al ${dmy(e)}`, f: k => k >= m && k <= e }); } }
+  else { const d0 = new Date(today + 'T12:00:00'); for (let i = 5; i >= 0; i--) { const d = new Date(d0.getFullYear(), d0.getMonth() - i, 1); const y = d.getFullYear(), mo = d.getMonth(); const key = `${y}-${String(mo + 1).padStart(2, '0')}`; B.push({ lab: MES_C[mo], tip: `${MONTHS[mo]} ${y}`, f: k => k.startsWith(key) }); } }
+  B.forEach(b => { b.PEX = 0; b.HT = 0; b.days = 0; worked.filter(b.f).forEach(k => { b.PEX += tots[k].PEX; b.HT += tots[k].HT; b.days++; }); b.T = b.PEX + b.HT; });
+  const max = Math.max(0, ...B.map(b => b.T));
+  const el = $('#prodChart');
+  if (!max) { el.innerHTML = '<div class="empty" style="padding:28px 8px">Sin muestras en este período.<br>El gráfico se llena a medida que registras días.</div>'; return; }
+  const step = (() => { const raw = max / 4; const p = Math.pow(10, Math.floor(Math.log10(raw))); return [1, 2, 2.5, 5, 10].map(x => x * p).find(x => x >= raw); })();
+  const yMax = step * Math.ceil(max / step);
+  const W = 600, H = 210, L = 40, R = 6, T = 14, Bm = PROD === 'd' ? 32 : 22, pw = W - L - R, ph = H - T - Bm, bw = pw / B.length, barW = Math.min(34, bw * 0.62);
+  const y = v => T + ph - v / yMax * ph;
+  const top = (x, y0, w, h, r) => { if (h <= 0) return ''; r = Math.min(r, h, w / 2); return `M${x},${y0 + h}V${y0 + r}Q${x},${y0} ${x + r},${y0}H${x + w - r}Q${x + w},${y0} ${x + w},${y0 + r}V${y0 + h}Z`; };
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Muestras por período"><g class="grid">`;
+  for (let v = 0; v <= yMax + 1e-9; v += step) svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`;
+  svg += `</g><g class="axis">`;
+  for (let v = 0; v <= yMax + 1e-9; v += step) svg += `<text x="${L - 7}" y="${y(v) + 3.5}" text-anchor="end">${n(v)}</text>`;
+  B.forEach((b, i) => { const cx = L + bw * i + bw / 2; svg += `<text x="${cx}" y="${H - Bm + 14}" text-anchor="middle">${b.lab}</text>`; if (b.lab2) svg += `<text x="${cx}" y="${H - Bm + 26}" text-anchor="middle" style="opacity:.7">${b.lab2}</text>`; });
+  svg += `</g>`;
+  const maxI = B.findIndex(b => b.T === max);
+  B.forEach((b, i) => {
+    const x = L + bw * i + (bw - barW) / 2; const yP = y(b.PEX), hP = T + ph - yP; const yT = y(b.T), gap = b.PEX && b.HT ? 2 : 0;
+    if (b.PEX) svg += `<path d="${b.HT ? `M${x},${yP + hP}V${yP}H${x + barW}V${yP + hP}Z` : top(x, yP, barW, hP, 4)}" fill="var(--s-pex)"/>`;
+    if (b.HT) svg += `<path d="${top(x, yT, barW, yP - yT - gap, 4)}" fill="var(--s-ht)"/>`;
+    if (i === maxI) svg += `<text x="${x + barW / 2}" y="${yT - 5}" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;font-weight:600;fill:var(--text)">${n(b.T)}</text>`;
+    svg += `<rect class="bar-hit" data-i="${i}" x="${L + bw * i}" y="${T}" width="${bw}" height="${ph}" rx="4"/>`;
+  });
+  svg += `<line x1="${L}" x2="${W - R}" y1="${T + ph}" y2="${T + ph}" style="stroke:var(--line-2)"/></svg><div class="ctip" id="ctip"></div>`;
+  el.innerHTML = svg;
+  const tip = $('#ctip', el);
+  const show = e => {
+    const r = e.target.closest('.bar-hit'); if (!r) return; const b = B[+r.dataset.i];
+    const box = el.getBoundingClientRect(), rb = r.getBoundingClientRect();
+    tip.innerHTML = `<div style="font-weight:600;margin-bottom:4px">${b.tip}</div><div class="r"><i style="background:var(--s-pex)"></i>PEX <b style="margin-left:auto;padding-left:14px">${n(b.PEX)}</b></div><div class="r"><i style="background:var(--s-ht)"></i>HT <b style="margin-left:auto">${n(b.HT)}</b></div><div class="r" style="border-top:1px solid var(--line);margin-top:4px;padding-top:4px">Total <b style="margin-left:auto">${n(b.T)}</b></div>${PROD !== 'd' ? `<div class="r" style="color:var(--muted);font-size:11px">${b.days} ${b.days === 1 ? 'día' : 'días'} trabajados</div>` : ''}`;
+    const cx = Math.min(Math.max(rb.left + rb.width / 2 - box.left, 70), box.width - 70);
+    const svgEl = $('svg', el); const sc = svgEl.getBoundingClientRect().width / W;
+    tip.style.left = cx + 'px'; tip.classList.add('on'); tip.style.top = Math.max(y(b.T) * sc, tip.offsetHeight + 6) + 'px';
+  };
+  el.onpointerover = show; el.onpointerdown = show; el.onpointerleave = () => tip.classList.remove('on');
+}
+$('#prodSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; PROD = b.dataset.v; store.set('prod.view', PROD); renderProd(); });
+
 /* ============================================================ PWA */
 let deferredPrompt = null;
 addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; $('#installBtn').style.display = 'block'; });
 $('#installBtn').addEventListener('click', async () => { if (!deferredPrompt) return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; $('#installBtn').style.display = 'none'; });
-if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) { navigator.serviceWorker.register('sw.js').catch(() => { }); }
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) { navigator.serviceWorker.register('sw.js').catch(() => { }); let hadCtl = !!navigator.serviceWorker.controller; navigator.serviceWorker.addEventListener('controllerchange', () => { if (hadCtl) location.reload(); hadCtl = true; }); }
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { });
 
 /* ============================================================ INIT */
@@ -1349,6 +1659,7 @@ net(); clock();
 renderClasif();
 Tray.init();
 renderRelRows(); calcRA();
+prSync(); prStats(); setVisMode(VIS_MODE);
 DB.counts().then(c => { PH_COUNTS = c; renderMin(); }).catch(() => renderMin()); renderMin();
 $('#regDate').value = REG_DATE; renderRanges();
 go(store.get('ui.view', 'clasif'));
