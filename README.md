@@ -45,6 +45,22 @@ Funciona **100 % sin internet** una vez instalada. Está optimizada para tablet 
 - **Productividad:** muestras de cutting y metros de sondaje por día, semana o mes, con gráficos y promedios.
 - **Respaldo:** exporta a CSV y guarda o restaura un respaldo completo en .json.
 
+### ✅ Validar planilla
+- Carga el Excel o CSV exportado del sistema de mapeo de cutting. Funciona offline, en tablet y en PC.
+- **Revisa la alteración** con los porcentajes recalculados sin dilución (QS + QSCP):
+  - **303:** QS entre 20 y 80 %.
+  - **301 y 309:** QS ≥ 80 %. Se distinguen por la ley: 301 tiene CuT < 0,8 y 309 tiene CuT ≥ 0,8.
+  - **307:** QS < 20 % y además KSIL ≥ 30 % o SV ≥ 10 %.
+  - **318:** QS < 20 %, con KSIL < 30 % y SV < 10 %.
+  - **312:** vetas de cuarzo ≥ 40 %.
+- **Revisa la mineralización:** el código debe coincidir con los dos sulfuros de mayor porcentaje y con el límite de Ts de 1 %. Los empates se marcan como advertencia.
+- **Casillas obligatorias:** Alteración, Mineralización, Molibdenita y Blenda no pueden estar vacías.
+- **Sumas:** la alteración y los sulfuros deben sumar 100. También revisa la composición de la dilución.
+- **Leyes:** compara la ley empírica con la de laboratorio y marca las diferencias mayores a 0,2 % en Cu o en As. También comprueba que la ley empírica coincida con la fórmula.
+- **Filtros** por geólogo, fechas y muestra. Cada muestra tiene una ficha de detalle con el valor sugerido.
+- **Excel de salida** con tres hojas: Resumen, Hallazgos y Datos marcados (celdas en rojo o amarillo).
+- **Umbrales editables** desde "Reglas y umbrales".
+
 ### 🎨 Interfaz
 - **Tema claro y oscuro,** con acento color cobre.
 - **Diseño táctil para tablet,** con botones grandes y textos legibles en terreno.
